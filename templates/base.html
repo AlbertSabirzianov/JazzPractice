@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'base.css' %}">
+    <link rel="shortcut icon" href="{% static 'funny_note.svg' %}" type="image/svg">
+</head>
+<body>
+<div class="container">
+    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+                    <img src="{% static 'funny_note.svg' %}" alt="описание"/>
+                    <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+                      <li>
+                        <a class="nav-link px-2 link-secondary" href="#">Главная</a>
+                      </li>
+                      <li>
+                        <a class="nav-link px-2 link-secondary" href="#">Учиться</a>
+                      </li>
+                      <li>
+                        <a class="nav-link px-2 link-secondary" href="#">Личная Страничка</a>
+                      </li>
+                      <li>
+                        <a class="nav-link px-2 link-secondary">Лучшие</a>
+                      </li>
+                    </ul>
+        <div class="col-md-3 text-end">
+            <button type="button" class="btn btn-outline-primary me-2">Войти</button>
+            <button type="button" class="btn btn-primary">Зарегистрироваться</button>
+        </div>
+    </header>
+</div>
+<div class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="bar">
+
+
+</div>
+<div class="container">
+  <footer class="py-3 my-4">
+    <p class="text-center text-muted">© 2022 Albert Sabirzianov</p>
+  </footer>
+</div>
+</body>
+</html>
