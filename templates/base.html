@@ -15,7 +15,7 @@
                     <img src="{% static 'funny_note.svg' %}" alt="описание"/>
                     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                       <li>
-                        <a class="nav-link px-2 link-secondary" href="#">Главная</a>
+                        <a class="nav-link px-2 link-secondary" href="{% url 'persons:mane' %}">Главная</a>
                       </li>
                       <li>
                         <a class="nav-link px-2 link-secondary" href="#">Учиться</a>
@@ -24,12 +24,12 @@
                         <a class="nav-link px-2 link-secondary" href="#">Личная Страничка</a>
                       </li>
                       <li>
-                        <a class="nav-link px-2 link-secondary">Лучшие</a>
+                        <a class="nav-link px-2 link-secondary" href="{% url 'persons:best' %}">Лучшие</a>
                       </li>
                     </ul>
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Войти</button>
-            <button type="button" class="btn btn-primary">Зарегистрироваться</button>
+            <button type="button" class="btn btn-outline-primary me-2" onclick="location.href={% url 'persons:into' %}">Войти</button>
+            <button type="button" class="btn btn-primary" onclick="location.href={% url 'persons:registration' %}">Зарегистрироваться</button>
         </div>
     </header>
 </div>

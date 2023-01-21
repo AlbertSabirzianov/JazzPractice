@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>
+    Лучшие студенты:
+</h3>
+<hr>
+{% for best in object_list %}
+    <ul>
+        <li>
+            {{ best.username }}
+        </li>
+    </ul>
+{% endfor %}
+{% endblock %}
