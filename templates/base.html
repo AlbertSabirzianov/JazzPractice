@@ -27,8 +27,12 @@
                         <a class="nav-link px-2 link-secondary" href="{% url 'persons:best' %}">Лучшие</a>
                       </li>
                     </ul>
+        {% if user.is_authenticated %}
+            <p> Привет {{ user.username }}!</p>
+            <button type="button" class="btn btn-primary" onclick="location.href={% url 'persons:logout' %}">Выйти</button>
+        {% endif %}
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2" onclick="location.href={% url 'persons:into' %}">Войти</button>
+            <button type="button" class="btn btn-outline-primary me-2" onclick="location.href={% url 'persons:login' %}">Войти</button>
             <button type="button" class="btn btn-primary" onclick="location.href={% url 'persons:registration' %}">Зарегистрироваться</button>
         </div>
     </header>

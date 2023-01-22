@@ -1,16 +1,16 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import logout
 from django.contrib.auth.models import User
-from django.shortcuts import render
+from django.contrib.auth.views import LoginView
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DetailView, TemplateView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView, CreateView, TemplateView
 
-from persons.forms import Registration
+from persons.forms import Registration, LoginForm
 
 
-class MainPage(ListView):
+class MainPage(TemplateView):
+    """Главная страница."""
     template_name = 'persons/mane_page.html'
-    model = User
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -19,20 +19,36 @@ class MainPage(ListView):
 
 
 class Best(ListView):
+    """Страничка с лучшими студентами."""
     template_name = 'persons/best.html'
     model = User
     ordering = ['username']
 
 
-def into(request):
-    return render(request, 'persons/into.html')
+class LoginUser(LoginView):
+    """Страница логина."""
+    form_class = LoginForm
+    template_name = 'registration/login.html'
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('persons:mane')
 
 
 class RegisterUser(CreateView):
+    """Страница регистрации, создаёт User и Studentmap."""
     form_class = Registration
     template_name = 'persons/registration.html'
     success_url = reverse_lazy('persons:success')
 
+    # def form_valid(self, form):
+    #    self.object = form.save()
+    # do something with self.object
+    # remember the import: from django.http import HttpResponseRedirect
+    #   return HttpResponseRedirect(self.get_success_url())
+
 
 class Success(TemplateView):
+    """Страница успешной регистрации."""
     template_name = 'persons/success.html'
