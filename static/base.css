@@ -1,13 +1,10 @@
-img {
-    height: 50px;
-}
-
 .content {
     background-color: #ffc2cc;
     position: relative;
     height: 500px;
     width: 700px;
     left: 150px;
-    padding: 50px;
+    padding: 60px;
     border-radius: 25% 10%;
+    box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
 }

@@ -6,13 +6,19 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{% static 'base.css' %}">
-    <link rel="shortcut icon" href="{% static 'funny_note.svg' %}" type="image/svg">
+    <link rel="shortcut icon" href="{% static 'music-note-list.svg' %}" type="image/svg">
 </head>
 <body>
 <div class="container">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-                    <img src="{% static 'funny_note.svg' %}" alt="описание"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
+                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
+                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
+                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
+                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
                     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                       <li>
                         <a class="nav-link px-2 link-secondary" href="{% url 'persons:mane' %}">Главная</a>
@@ -28,13 +34,25 @@
                       </li>
                     </ul>
         {% if user.is_authenticated %}
-            <p> Привет {{ user.username }}!</p>
-            <button type="button" class="btn btn-primary" onclick="location.href={% url 'persons:logout' %}">Выйти</button>
-        {% endif %}
+        <div class="btn-group">
+          <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+              <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+           </svg>
+            Hi, {{ user.username }}!
+          </button>
+          <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'persons:logout' %}">Выйти</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'persons:login' %}">Сменить пользователя</a></li>
+          </ul>
+        </div>
+        {% else %}
         <div class="col-md-3 text-end">
             <button type="button" class="btn btn-outline-primary me-2" onclick="location.href={% url 'persons:login' %}">Войти</button>
             <button type="button" class="btn btn-primary" onclick="location.href={% url 'persons:registration' %}">Зарегистрироваться</button>
         </div>
+        {% endif %}
     </header>
 </div>
 <div class="content">
