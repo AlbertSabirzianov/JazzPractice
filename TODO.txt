@@ -1,2 +1,4 @@
-Make Student Cart Done
-Make PersonMap and StudentMap in models.py .....
+Make Student Cart ....Done
+Make PersonMap and StudentMap in models.py ... Done
+Make About page and View ..... Done
+Make Filter in 'Best' page ....

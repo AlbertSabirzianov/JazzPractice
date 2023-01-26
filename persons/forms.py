@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Registration(UserCreationForm):
+    """Форма для отображения регистрации."""
     username = forms.CharField(label='',
                                widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'id': "floatingInput",
@@ -30,6 +31,7 @@ class Registration(UserCreationForm):
 
 
 class LoginForm(AuthenticationForm):
+    """Форма для отображения логина на сайте."""
     username = forms.CharField(label='',
                                widget=forms.TextInput(attrs={'class': 'form-control',
                                                              'id': "floatingInput",

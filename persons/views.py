@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, TemplateView
 
 from persons.forms import Registration, LoginForm
+from persons.models import AboutSite
 
 
 class MainPage(TemplateView):
@@ -52,3 +53,13 @@ class RegisterUser(CreateView):
 class Success(TemplateView):
     """Страница успешной регистрации."""
     template_name = 'persons/success.html'
+
+
+class About(ListView):
+    """
+    Страница "О проекте".
+    """
+    template_name = 'persons/about.html'
+    model = AboutSite
+    ordering = ['page']
+    paginate_by = 1

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for page in object_list %}
+  <p>
+    {{ page.text }}
+  </p>
+{% endfor %}
+
+{% if is_paginated %}
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+
+
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Предыдущая</a>
+                    </li>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                    <a class="page-link" href="?page={{ page_obj.next_page_number }}">Дальше</a>
+                    </li>
+                {% endif %}
+
+
+    </ul>
+</nav>
+{% endif %}
+{% endblock %}
