@@ -11,6 +11,9 @@ class StudentMap(models.Model):
     start_study = models.DateTimeField(_('Начало обучения'), auto_now=True)
     graduate = models.BooleanField(_('Закончил курс'), default=False)
 
+    def __str__(self):
+        return f'Учебная карта {self.user.username}'
+
 
 class PersonalMap(models.Model):
     """Модель с личными данными студента."""
@@ -29,7 +32,12 @@ class PersonalMap(models.Model):
         MAG = 5, _('Магистратура')
         ASS = 6, _('Аспирантура')
 
-    stady_level = models.PositiveSmallIntegerField(_('Уровень образования'), choices=Institutions.choices, default=0)
+    stady_level = models.PositiveSmallIntegerField(_('Уровень образования'),
+                                                   choices=Institutions.choices,
+                                                   default=0)
+
+    def __str__(self):
+        return f'Персональная карта {self.user.username}'
 
     class Course(models.IntegerChoices):
         """
@@ -48,3 +56,6 @@ class PersonalMap(models.Model):
 class AboutSite(models.Model):
     text = models.TextField(_('О сайте'), null=False, blank=False)
     page = models.PositiveSmallIntegerField(_('Страничка'))
+
+    def __str__(self):
+        return f'О сайте страница - {self.page}'

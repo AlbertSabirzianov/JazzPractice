@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Best, MainPage, RegisterUser, Success, LoginUser, logout_user, About
+from .views import Best, MainPage, RegisterUser, Success, LoginUser, logout_user, About, PersonalPage
 
 urlpatterns = [
     path('', MainPage.as_view(), name='mane'),
@@ -9,4 +9,5 @@ urlpatterns = [
     path('registation/', RegisterUser.as_view(), name='registration'),
     path('sucsess/', Success.as_view(), name='success'),
     path('about/', About.as_view(), name='about'),
+    path('id/<int:pk>', PersonalPage.as_view(), name='person')
 ]

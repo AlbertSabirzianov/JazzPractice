@@ -39,9 +39,10 @@
             Привет, {{ user.username }}!
           </button>
           <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{% url 'persons:logout' %}">Выйти</a></li>
+              <li><a class="dropdown-item" href="{% url 'persons:person' user.pk %}">Личная страница</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{% url 'persons:login' %}">Сменить пользователя</a></li>
+              <li><a class="dropdown-item" href="{% url 'persons:logout' %}">Выйти</a></li>
           </ul>
         </div>
         {% else %}

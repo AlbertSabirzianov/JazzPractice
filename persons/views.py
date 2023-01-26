@@ -1,12 +1,13 @@
 from django.contrib.auth import logout
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, TemplateView
+from django.views.generic import ListView, CreateView, TemplateView, DetailView
 
 from persons.forms import Registration, LoginForm
-from persons.models import AboutSite
+from persons.models import AboutSite, PersonalMap, StudentMap
 
 
 class MainPage(TemplateView):
@@ -15,7 +16,7 @@ class MainPage(TemplateView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['all'] = len(User.objects.all())
+        context['all'] = len(User.objects.filter(is_staff=False))
         return context
 
 
@@ -24,6 +25,7 @@ class Best(ListView):
     template_name = 'persons/best.html'
     model = User
     ordering = ['username']
+    queryset = User.objects.filter(is_staff=False)
 
 
 class LoginUser(LoginView):
@@ -43,11 +45,11 @@ class RegisterUser(CreateView):
     template_name = 'persons/registration.html'
     success_url = reverse_lazy('persons:success')
 
-    # def form_valid(self, form):
-    #    self.object = form.save()
-    # do something with self.object
-    # remember the import: from django.http import HttpResponseRedirect
-    #   return HttpResponseRedirect(self.get_success_url())
+    def form_valid(self, form):
+        self.object = form.save()
+        PersonalMap.objects.create(user=self.object)
+        StudentMap.objects.create(user=self.object)
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class Success(TemplateView):
@@ -63,3 +65,8 @@ class About(ListView):
     model = AboutSite
     ordering = ['page']
     paginate_by = 1
+
+
+class PersonalPage(DetailView):
+    template_name = 'persons/person.html'
+    model = User
