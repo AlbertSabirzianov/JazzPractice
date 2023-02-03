@@ -15,8 +15,9 @@ class MainPage(TemplateView):
     template_name = 'persons/mane_page.html'
 
     def get_context_data(self, *, object_list=None, **kwargs):
+        """Добавляем в контекст количество студентов."""
         context = super().get_context_data(**kwargs)
-        context['all'] = len(User.objects.filter(is_staff=False))
+        context['all'] = User.objects.filter(is_staff=False).count()
         return context
 
 
@@ -35,6 +36,7 @@ class LoginUser(LoginView):
 
 
 def logout_user(request):
+    """Разлогинится."""
     logout(request)
     return redirect('persons:mane')
 
@@ -46,6 +48,7 @@ class RegisterUser(CreateView):
     success_url = reverse_lazy('persons:success')
 
     def form_valid(self, form):
+        """Создаём обекты PersonalMap и StudentMap, связанные с User."""
         self.object = form.save()
         PersonalMap.objects.create(user=self.object)
         StudentMap.objects.create(user=self.object)
@@ -67,6 +70,7 @@ class About(ListView):
     paginate_by = 1
 
 
-class PersonalPage(DetailView):
+class PersonalPage(TemplateView):
+    """Личная страничка."""
     template_name = 'persons/person.html'
-    model = User
+

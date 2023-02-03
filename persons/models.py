@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from .utils import DataMixin
 
 
 # Create your models here.
@@ -15,7 +16,7 @@ class StudentMap(models.Model):
         return f'Учебная карта {self.user.username}'
 
 
-class PersonalMap(models.Model):
+class PersonalMap(DataMixin, models.Model):
     """Модель с личными данными студента."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     description = models.TextField(_('О себе'), null=True, blank=True)
@@ -36,9 +37,6 @@ class PersonalMap(models.Model):
                                                    choices=Institutions.choices,
                                                    default=0)
 
-    def __str__(self):
-        return f'Персональная карта {self.user.username}'
-
     class Course(models.IntegerChoices):
         """
         Выбор курса.
@@ -51,6 +49,17 @@ class PersonalMap(models.Model):
         FIVE = 5, _('5й')
 
     stady_course = models.PositiveSmallIntegerField(_('Курс'), choices=Course.choices, default=0)
+
+    def get_stady_level(self):
+        """Возвращает в шаблон уровень образования."""
+        return self.data_stady_level[self.stady_level]
+
+    def get_stady_course(self):
+        """Возвращает в шаблон курс."""
+        return self.data_course[self.stady_course]
+
+    def __str__(self):
+        return f'Персональная карта {self.user.username}'
 
 
 class AboutSite(models.Model):
