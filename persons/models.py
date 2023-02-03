@@ -81,7 +81,18 @@ class Feetback(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_time = models.DateTimeField(auto_now=True)
     text = models.TextField(null=False, blank=False, verbose_name='Отзыв')
-    stars = models.PositiveSmallIntegerField(verbose_name='Оценка')
+
+    class Star(models.IntegerChoices):
+        ONE = 1
+        TWO = 2
+        THREE = 3
+        FOUR = 4
+        FIVE = 5
+
+    stars = models.PositiveSmallIntegerField(verbose_name='Оценка', choices=Star.choices)
 
     class Meta:
         ordering = ['-pub_time']
+
+    def __str__(self):
+        return f'Отзыв {self.user.get_full_name}, оценка {self.stars}'
