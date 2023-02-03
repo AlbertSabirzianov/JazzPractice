@@ -4,7 +4,6 @@ from django.utils.translation import gettext_lazy as _
 from .utils import DataMixin
 
 
-# Create your models here.
 class StudentMap(models.Model):
     """Модель с данными студента, связана с аккаунтом  User."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
@@ -12,14 +11,17 @@ class StudentMap(models.Model):
     start_study = models.DateTimeField(_('Начало обучения'), auto_now=True)
     graduate = models.BooleanField(_('Закончил курс'), default=False)
 
+    class Meta:
+        ordering = ['-reiting']
+
     def __str__(self):
         return f'Учебная карта {self.user.username}'
 
 
 class PersonalMap(DataMixin, models.Model):
-    """Модель с личными данными студента."""
+    """Модель с личными данными студента, связана с User."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    description = models.TextField(_('О себе'), null=True, blank=True)
+    description = models.TextField(_('О себе'), blank=True)
 
     class Institutions(models.IntegerChoices):
         """
@@ -59,12 +61,27 @@ class PersonalMap(DataMixin, models.Model):
         return self.data_course[self.stady_course]
 
     def __str__(self):
-        return f'Персональная карта {self.user.username}'
+        return f'Персональная карта {self.user.get_full_name}'
 
 
 class AboutSite(models.Model):
+    """Модель информации о сайте, выходит на странице "О проекте"."""
     text = models.TextField(_('О сайте'), null=False, blank=False)
     page = models.PositiveSmallIntegerField(_('Страничка'))
 
+    class Meta:
+        ordering = ['page']
+
     def __str__(self):
         return f'О сайте страница - {self.page}'
+
+
+class Feetback(models.Model):
+    """Модель оценки сайта."""
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    pub_time = models.DateTimeField(auto_now=True)
+    text = models.TextField(null=False, blank=False, verbose_name='Отзыв')
+    stars = models.PositiveSmallIntegerField(verbose_name='Оценка')
+
+    class Meta:
+        ordering = ['-pub_time']

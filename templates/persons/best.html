@@ -9,7 +9,7 @@
 {% for best in object_list %}
     <ul>
         <li>
-            {{ best.username }}
+            {{ best.user.get_full_name }}
         </li>
     </ul>
 {% endfor %}

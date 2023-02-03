@@ -24,9 +24,8 @@ class MainPage(TemplateView):
 class Best(ListView):
     """Страничка с лучшими студентами."""
     template_name = 'persons/best.html'
-    model = User
-    ordering = ['username']
-    queryset = User.objects.filter(is_staff=False)
+    model = StudentMap
+    queryset = StudentMap.objects.filter(user__is_staff=False)
 
 
 class LoginUser(LoginView):
@@ -66,7 +65,6 @@ class About(ListView):
     """
     template_name = 'persons/about.html'
     model = AboutSite
-    ordering = ['page']
     paginate_by = 1
 
 
