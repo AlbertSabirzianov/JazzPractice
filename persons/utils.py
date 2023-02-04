@@ -22,3 +22,6 @@ class DataMixin:
         4: '4й',
         5: '5й',
     }
+
+    def get_full_name(self):
+        return f'{self.user.last_name} {self.user.first_name}'

@@ -1,5 +1,11 @@
 from django.urls import path
-from .views import Best, MainPage, RegisterUser, Success, LoginUser, logout_user, About, PersonalPage
+
+from .views import (Best, MainPage, RegisterUser, Success, LoginUser,
+                    logout_user, About, PersonalPage, MakeFeedBack, UpdateFeedBack,
+                    FeedBackView,)
+
+
+app_name = 'persons'
 
 urlpatterns = [
     path('', MainPage.as_view(), name='mane'),
@@ -9,5 +15,9 @@ urlpatterns = [
     path('registation/', RegisterUser.as_view(), name='registration'),
     path('sucsess/', Success.as_view(), name='success'),
     path('about/', About.as_view(), name='about'),
-    path('id/<int:pk>', PersonalPage.as_view(), name='person')
+    path('id/<int:pk>', PersonalPage.as_view(), name='person'),
+    path('make_feetback/', MakeFeedBack.as_view(), name='make_feetback'),
+    path('edit_feetback/<pk>/', UpdateFeedBack.as_view(), name='edit_feetback'),
+    path('feetback/', FeedBackView.as_view(), name='feetback'),
+
 ]

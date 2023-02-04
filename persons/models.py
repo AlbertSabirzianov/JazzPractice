@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 from .utils import DataMixin
 
 
-class StudentMap(models.Model):
+class StudentMap(models.Model, DataMixin):
     """Модель с данными студента, связана с аккаунтом  User."""
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     reiting = models.PositiveSmallIntegerField(_('Рейтинг'), default=0)
@@ -15,7 +15,7 @@ class StudentMap(models.Model):
         ordering = ['-reiting']
 
     def __str__(self):
-        return f'Учебная карта {self.user.username}'
+        return f'Учебная карта {self.get_full_name()}'
 
 
 class PersonalMap(DataMixin, models.Model):
@@ -43,7 +43,7 @@ class PersonalMap(DataMixin, models.Model):
         """
         Выбор курса.
         """
-        NOT = 0, _('Нет музыкального образования')
+        NOT = 0, _('Не выбранно')
         ONE = 1, _('1й')
         THO = 2, _('2й')
         THREE = 3, _('3й')
@@ -61,7 +61,7 @@ class PersonalMap(DataMixin, models.Model):
         return self.data_course[self.stady_course]
 
     def __str__(self):
-        return f'Персональная карта {self.user.get_full_name}'
+        return f'Персональная карта {self.get_full_name()}'
 
 
 class AboutSite(models.Model):

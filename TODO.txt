@@ -5,5 +5,6 @@ Make Filter in 'Best' page .... Done
 Make first_name and Second name in User .... Done
 Make Personal page ... Done
 Make get_ methods in Student and Person models ... Done
-Make page fitback ...
+Make page fitback ... Done
+C
 

@@ -4,10 +4,10 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, TemplateView, DetailView
+from django.views.generic import ListView, CreateView, TemplateView, DetailView, UpdateView
 
 from persons.forms import Registration, LoginForm
-from persons.models import AboutSite, PersonalMap, StudentMap
+from persons.models import AboutSite, PersonalMap, StudentMap, Feetback
 
 
 class MainPage(TemplateView):
@@ -25,7 +25,6 @@ class Best(ListView):
     """Страничка с лучшими студентами."""
     template_name = 'persons/best.html'
     model = StudentMap
-    queryset = StudentMap.objects.filter(user__is_staff=False)
 
 
 class LoginUser(LoginView):
@@ -71,4 +70,35 @@ class About(ListView):
 class PersonalPage(TemplateView):
     """Личная страничка."""
     template_name = 'persons/person.html'
+
+
+class MakeFeedBack(CreateView):
+    """Страница добавления отзыва."""
+    template_name = 'persons/make_feetback.html'
+    model = Feetback
+    fields = ['text', 'stars']
+    success_url = reverse_lazy('persons:mane')
+
+    def form_valid(self, form):
+        """Добавляем в форму Автора отзыва (поле User)."""
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class UpdateFeedBack(UpdateView):
+    """Страница редактирования отзыва."""
+    template_name = 'persons/edit_feetback.html'
+    model = Feetback
+    fields = ['text', 'stars']
+    success_url = reverse_lazy('persons:mane')
+
+
+class FeedBackView(ListView):
+    """Страница просмотра отзывов"""
+    template_name = 'persons/feetback.html'
+    model = Feetback
+
+
 
