@@ -3,11 +3,16 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h3>
-  Отзыв
+  Добавте свой отзыв:
 </h3>
 <form method="post">
+<div class="mb-3">
+
+
+
   {% csrf_token %}
   {{ form.as_p }}
+</div>
   <button type="submit" class="btn btn-light">Добавить</button>
 
 </form>

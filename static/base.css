@@ -7,4 +7,9 @@
     padding: 60px;
     border-radius: 25% 10%;
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
+    overflow-y: scroll;
+}
+
+.content::-webkit-scrollbar {
+  width: 0px;         /* ширина scrollbar */
 }

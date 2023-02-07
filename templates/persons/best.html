@@ -5,12 +5,20 @@
 <h3>
     Лучшие студенты:
 </h3>
-<hr>
-{% for best in object_list %}
-    <ul>
-        <li>
-            {{ best.user.get_full_name }}
-        </li>
-    </ul>
-{% endfor %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Имя</th>
+      <th scope="col">Рейтинг</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for best in object_list %}
+    <tr>
+      <th scope="row">{{ best.get_full_name }}</th>
+      <td>{{ best.reiting }}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

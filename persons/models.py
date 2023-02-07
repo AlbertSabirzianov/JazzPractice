@@ -1,3 +1,4 @@
+from typing import Type
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -80,14 +81,14 @@ class Feetback(models.Model):
     """Модель оценки сайта."""
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_time = models.DateTimeField(auto_now=True)
-    text = models.TextField(null=False, blank=False, verbose_name='Отзыв')
+    text = models.TextField(null=False, blank=False, verbose_name='')
 
     class Star(models.IntegerChoices):
-        ONE = 1
-        TWO = 2
-        THREE = 3
-        FOUR = 4
-        FIVE = 5
+        ONE = 1, _('1')
+        TWO = 2, _('2')
+        THREE = 3, _('3')
+        FOUR = 4, _('4')
+        FIVE = 5, _('5')
 
     stars = models.PositiveSmallIntegerField(verbose_name='Оценка', choices=Star.choices)
 
@@ -95,4 +96,5 @@ class Feetback(models.Model):
         ordering = ['-pub_time']
 
     def __str__(self):
-        return f'Отзыв {self.user.get_full_name}, оценка {self.stars}'
+        mymap: Type[StudentMap] = StudentMap.objects.get(user=self.user)
+        return f'Отзыв {mymap.get_full_name()}, оценка {self.stars}'

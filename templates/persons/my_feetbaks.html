@@ -13,6 +13,7 @@
     <h5 class="card-title">Оценка: {{ feet.stars }}</h5>
     <p class="card-text">{{ feet.text }}</p>
   </div>
+    <button class="btn btn-light" onclick="location.href='{% url 'persons:edit_feetback' feet.pk %}'">Редактировать</button>
 </div>
 
 {% endfor %}

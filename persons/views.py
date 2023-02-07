@@ -99,6 +99,18 @@ class FeedBackView(ListView):
     """Страница просмотра отзывов"""
     template_name = 'persons/feetback.html'
     model = Feetback
+    paginate_by = 3
 
+
+class MyFeetbacks(ListView):
+    """Страница моих отзывов."""
+    template_name = 'persons/my_feetbaks.html'
+    model = Feetback
+    paginate_by = 3
+
+    def get_queryset(self):
+        """Добавляем только те отзывы, которые сделал данный пользователь."""
+        queryset = self.model.objects.filter(user=self.request.user)
+        return queryset
 
 
