@@ -12,7 +12,8 @@ Make butifull page feetback ... Done
 Make butifull page Best ... Done
 Make page, view, url my_feetbacks ... Done
 Make page, view edit_feetbacks ... Done
-Make page, view, url edit_profile ...
-
+Make page, view, url edit_profile ... Done
+Make form in forms.py for EditProfile ...
+Make form in forms.py for UpdateFeedBack ...
 
 

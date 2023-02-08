@@ -13,6 +13,7 @@
         <h3>
         {{ user.get_full_name }}
         </h3>
+        <button class="btn btn-light" onclick="document.location='{% url 'persons:edit_profile' user.pk %}'">Редактировать</button><hr>
     </div>
 
 <div class="card border-light mb-3" style="max-width: 18rem;">
@@ -42,6 +43,7 @@
     <p class="card-text">{{ user.personalmap.description }}</p>
   </div>
 </div>
+
 {% endif %}
 
 

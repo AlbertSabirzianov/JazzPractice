@@ -114,3 +114,10 @@ class MyFeetbacks(ListView):
         return queryset
 
 
+class EditProfile(UpdateView):
+    """Страница редактирования личной информации."""
+    template_name = 'persons/edit_profile.html'
+    model = PersonalMap
+    fields = ['description', 'stady_level', 'stady_course']
+    success_url = reverse_lazy('persons:person')
+
