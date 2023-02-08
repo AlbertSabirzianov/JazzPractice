@@ -92,7 +92,7 @@ class UpdateFeedBack(UpdateView):
     template_name = 'persons/edit_feetback.html'
     model = Feetback
     fields = ['text', 'stars']
-    success_url = reverse_lazy('persons:mane')
+    success_url = reverse_lazy('persons:my_feetbacks')
 
 
 class FeedBackView(ListView):
