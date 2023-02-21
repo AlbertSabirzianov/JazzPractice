@@ -1,12 +1,13 @@
 from django.contrib.auth import logout
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, TemplateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, TemplateView, UpdateView, DeleteView
 
-from persons.forms import Registration, LoginForm
+from persons.forms import Registration, LoginForm, FeetBackForm, PersonalMapForm
 from persons.models import AboutSite, PersonalMap, StudentMap, Feetback
 
 
@@ -67,16 +68,15 @@ class About(ListView):
     paginate_by = 1
 
 
-class PersonalPage(TemplateView):
+class PersonalPage(TemplateView, LoginRequiredMixin):
     """Личная страничка."""
     template_name = 'persons/person.html'
 
 
-class MakeFeedBack(CreateView):
+class MakeFeedBack(CreateView, LoginRequiredMixin):
     """Страница добавления отзыва."""
     template_name = 'persons/make_feetback.html'
-    model = Feetback
-    fields = ['text', 'stars']
+    form_class = FeetBackForm
     success_url = reverse_lazy('persons:mane')
 
     def form_valid(self, form):
@@ -87,12 +87,18 @@ class MakeFeedBack(CreateView):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class UpdateFeedBack(UpdateView):
+class UpdateFeedBack(UpdateView, LoginRequiredMixin):
     """Страница редактирования отзыва."""
     template_name = 'persons/edit_feetback.html'
     model = Feetback
-    fields = ['text', 'stars']
+    form_class = FeetBackForm
     success_url = reverse_lazy('persons:my_feetbacks')
+
+    def get_context_data(self, **kwargs):
+        """Добавляем в контекст pk отзыва."""
+        context = super(UpdateFeedBack, self).get_context_data()
+        context['pk'] = self.object.pk
+        return context
 
 
 class FeedBackView(ListView):
@@ -102,7 +108,7 @@ class FeedBackView(ListView):
     paginate_by = 3
 
 
-class MyFeetbacks(ListView):
+class MyFeetbacks(ListView, LoginRequiredMixin):
     """Страница моих отзывов."""
     template_name = 'persons/my_feetbaks.html'
     model = Feetback
@@ -114,10 +120,16 @@ class MyFeetbacks(ListView):
         return queryset
 
 
-class EditProfile(UpdateView):
+class EditProfile(UpdateView, LoginRequiredMixin):
     """Страница редактирования личной информации."""
     template_name = 'persons/edit_profile.html'
     model = PersonalMap
-    fields = ['description', 'stady_level', 'stady_course']
+    form_class = PersonalMapForm
     success_url = reverse_lazy('persons:person')
 
+
+class DeleteFeetBack(DeleteView, LoginRequiredMixin):
+    """Страница удаления отзыва."""
+    template_name = 'persons/delet_feetback.html'
+    model = Feetback
+    success_url = reverse_lazy('persons:my_feetbacks')

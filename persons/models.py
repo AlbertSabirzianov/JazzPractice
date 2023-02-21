@@ -96,5 +96,4 @@ class Feetback(models.Model):
         ordering = ['-pub_time']
 
     def __str__(self):
-        mymap: Type[StudentMap] = StudentMap.objects.get(user=self.user)
-        return f'Отзыв {mymap.get_full_name()}, оценка {self.stars}'
+        return f'{self.text[:30]}...'

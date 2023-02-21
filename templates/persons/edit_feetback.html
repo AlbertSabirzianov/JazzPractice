@@ -9,6 +9,7 @@
   {% csrf_token %}
   {{ form.as_p }}
   <button type="submit" class="btn btn-light">Изменить</button>
+  <button type="button" class="btn btn-light" onclick="document.location='{% url 'persons:delete' pk %}'">Удалить</button>
 
 </form>
 {% endif %}

@@ -2,7 +2,7 @@ from django.urls import path
 
 from .views import (Best, MainPage, RegisterUser, Success, LoginUser,
                     logout_user, About, PersonalPage, MakeFeedBack, UpdateFeedBack,
-                    FeedBackView, MyFeetbacks, EditProfile)
+                    FeedBackView, MyFeetbacks, EditProfile, DeleteFeetBack)
 
 
 app_name = 'persons'
@@ -20,5 +20,6 @@ urlpatterns = [
     path('edit_feetback/<pk>/', UpdateFeedBack.as_view(), name='edit_feetback'),
     path('feetback/', FeedBackView.as_view(), name='feetback'),
     path('my_feetbacks/', MyFeetbacks.as_view(), name='my_feetbacks'),
-    path('edit_profile/<pk>', EditProfile.as_view(), name='edit_profile'),
+    path('edit_profile/<pk>/', EditProfile.as_view(), name='edit_profile'),
+    path('delete/<pk>/', DeleteFeetBack.as_view(), name='delete'),
 ]

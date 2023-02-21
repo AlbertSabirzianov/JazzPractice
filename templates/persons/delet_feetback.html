@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h3>
+  Удаление отзыва
+</h3>
+<hr>
+<form method="post">
+  {% csrf_token %}
+  Вы уверены что хотитте удалить свой отзыв? <p>"{{ object }}"</p>
+
+
+  <button type="submit" class="btn btn-light">Удалить</button>
+  <button type="button" class="btn btn-light" onclick="document.location='{% url 'persons:my_feetbacks' %}'">Назад</button>
+
+</form>
+{% endif %}
+{% endblock %}
