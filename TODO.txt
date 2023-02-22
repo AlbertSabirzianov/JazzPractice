@@ -18,6 +18,6 @@ Make form in forms.py for UpdateFeedBack ... Done
 Make delete_feetback .... Done
 Make form in forms.py for PersonalMap ... Done
 Add DataMixin in classbasedvies ... Done
-Make tests for 'persons'....
+Make tests for 'persons'.... Done
 
 

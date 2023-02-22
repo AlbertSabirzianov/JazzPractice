@@ -68,12 +68,12 @@ class About(ListView):
     paginate_by = 1
 
 
-class PersonalPage(TemplateView, LoginRequiredMixin):
+class PersonalPage(LoginRequiredMixin, TemplateView):
     """Личная страничка."""
     template_name = 'persons/person.html'
 
 
-class MakeFeedBack(CreateView, LoginRequiredMixin):
+class MakeFeedBack(LoginRequiredMixin, CreateView):
     """Страница добавления отзыва."""
     template_name = 'persons/make_feetback.html'
     form_class = FeetBackForm
@@ -87,7 +87,7 @@ class MakeFeedBack(CreateView, LoginRequiredMixin):
         return HttpResponseRedirect(self.get_success_url())
 
 
-class UpdateFeedBack(UpdateView, LoginRequiredMixin):
+class UpdateFeedBack(LoginRequiredMixin, UpdateView):
     """Страница редактирования отзыва."""
     template_name = 'persons/edit_feetback.html'
     model = Feetback
@@ -108,7 +108,7 @@ class FeedBackView(ListView):
     paginate_by = 3
 
 
-class MyFeetbacks(ListView, LoginRequiredMixin):
+class MyFeetbacks(LoginRequiredMixin, ListView):
     """Страница моих отзывов."""
     template_name = 'persons/my_feetbaks.html'
     model = Feetback
@@ -120,7 +120,7 @@ class MyFeetbacks(ListView, LoginRequiredMixin):
         return queryset
 
 
-class EditProfile(UpdateView, LoginRequiredMixin):
+class EditProfile(LoginRequiredMixin, UpdateView):
     """Страница редактирования личной информации."""
     template_name = 'persons/edit_profile.html'
     model = PersonalMap
@@ -128,7 +128,7 @@ class EditProfile(UpdateView, LoginRequiredMixin):
     success_url = reverse_lazy('persons:person')
 
 
-class DeleteFeetBack(DeleteView, LoginRequiredMixin):
+class DeleteFeetBack(LoginRequiredMixin, DeleteView):
     """Страница удаления отзыва."""
     template_name = 'persons/delet_feetback.html'
     model = Feetback

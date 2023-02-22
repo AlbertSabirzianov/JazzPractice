@@ -14,10 +14,11 @@ class Registration(UserCreationForm):
                                )
                                )
     email = forms.CharField(label='',
-                            widget=forms.TextInput(attrs={'class': 'form-control',
-                                                          'id': "floatingInput",
-                                                          'type': 'email',
-                                                          'placeholder': 'Email'}))
+                            widget=forms.TextInput(
+                                attrs={'class': 'form-control',
+                                       'id': "floatingInput",
+                                       'type': 'email',
+                                       'placeholder': 'Email'}))
     password1 = forms.CharField(label='',
                                 widget=forms.TextInput(attrs={'class': 'form-control',
                                                               'id': "floatingPassword",
@@ -76,6 +77,7 @@ class FeetBackForm(forms.ModelForm):
 
 class PersonalMapForm(forms.ModelForm):
     """Форма для редактирования личной информации PersonalMap."""
+
     class Meta:
         model = PersonalMap
         fields = ['description', 'stady_level', 'stady_course']
