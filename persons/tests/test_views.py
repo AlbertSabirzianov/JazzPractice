@@ -55,6 +55,18 @@ class ViesTestCase(TestCase):
                                               )
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
+    def test_out_login(self):
+        """Проверяем разлогин."""
+        response = self.authorized_client.get(
+            reverse('persons:logout'),
+            follow=True,
+        )
+
+        self.assertRedirects(
+            response,
+            reverse('persons:mane')
+        )
+
 
 
 
