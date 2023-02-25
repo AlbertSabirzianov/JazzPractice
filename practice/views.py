@@ -7,10 +7,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, DeleteView, DetailView
 
-from utils import Chord
+from .utils import Chord
 
-from models import ChordChoice
-from forms import ChordChoiceForm
+from .models import ChordChoice
+from .forms import ChordChoiceForm
 
 
 class PracticeView(LoginRequiredMixin, CreateView):
@@ -19,14 +19,9 @@ class PracticeView(LoginRequiredMixin, CreateView):
     form_class = ChordChoiceForm
 
     def __init__(self, **kwargs):
-        super().__init__(kwargs)
-        self.media_chord: str = None
-        self.new_chord: int = None
-
-    def get_new_chord(self):
-        """Придумывает и сохраняет новый аккорд new_chord"""
-        self.new_chord = random.randint(1,25)
-        self.media_chord = Chord.get_new_chord(self.new_chord)
+        super().__init__(**kwargs)
+        self.new_chord: int = random.randint(1, 25)
+        self.media_chord: str = Chord.get_new_chord(self.new_chord)
 
     def get_success_url(self):
         return reverse('practice:sucsess', kwargs={'pk': self.object.pk})
@@ -34,7 +29,6 @@ class PracticeView(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         """Добавляем в контекст media_chord (адрес записи аккорда mp3)."""
         context = super().get_context_data()
-        self.get_new_chord()
         context['media_chord'] = self.media_chord
         return context
 
@@ -59,3 +53,10 @@ class PracticeResult(LoginRequiredMixin, ListView):
     """Страничка с результатами практики."""
     template_name = 'practice/advice.html'
     model = ChordChoice
+
+    def get_queryset(self):
+        """Выбираем только те результаты, которые принадлежат студенту."""
+        queryset = self.model.filter(
+            user=self.request.user.studentmap
+        )
+        return queryset
