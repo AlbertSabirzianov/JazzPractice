@@ -19,5 +19,9 @@ Make delete_feetback .... Done
 Make form in forms.py for PersonalMap ... Done
 Add DataMixin in classbasedvies ... Done
 Make tests for 'persons'.... Done
+Make ChordPractice view .... Done
+Make ChordSucsess view ...
+Make PracticeHistory view ...
+Make PracticeAdvice view ...
 
 
