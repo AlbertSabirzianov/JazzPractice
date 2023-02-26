@@ -59,7 +59,7 @@ class ChordChoice(models.Model, ChordDataMixin):
         return self.data_number_str[self.right_desigion]
 
     def __str__(self):
-        return f'{self.choice_time} - {self.user.get_full_name()} - {self.is_right()}'
+        return f'{self.user.get_full_name()} - {self.is_right()}'
 
     class Meta:
         ordering = ['-choice_time']

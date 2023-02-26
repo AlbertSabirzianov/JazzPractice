@@ -1,16 +1,13 @@
 import random
 
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
-from django.views.generic import ListView, CreateView, TemplateView, UpdateView, DeleteView, DetailView
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from django.views.generic import ListView, CreateView, DetailView
 
-from .utils import Chord
-
-from .models import ChordChoice
 from .forms import ChordChoiceForm
+from .models import ChordChoice
+from .utils import Chord
 
 
 class PracticeView(LoginRequiredMixin, CreateView):
@@ -40,6 +37,10 @@ class PracticeView(LoginRequiredMixin, CreateView):
         self.object.right_desigion = self.new_chord
         self.object.user = self.request.user.studentmap
         self.object.save()
+        if self.object.is_right():
+            """Если аккорд угадан, добавляем рейтинг студенту."""
+            self.request.user.studentmap.reiting += 1
+            self.request.user.studentmap.save()
         return HttpResponseRedirect(self.get_success_url())
 
 
@@ -56,7 +57,7 @@ class PracticeResult(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         """Выбираем только те результаты, которые принадлежат студенту."""
-        queryset = self.model.filter(
+        queryset = self.model.objects.filter(
             user=self.request.user.studentmap
         )
         return queryset
