@@ -3,7 +3,7 @@
 {% block content %}
 
 <h3>
-    История практики:
+    Всего угадано: {{ user.studentmap.reiting }}
 </h3>
 <table class="table table-striped">
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
    {% for object in object_list %}
     <tr>
-      <th scope="row">{{ object.choice_time|date:"j F Y" }}</th>
+      <th scope="row">{{ object.choice_time|date:"d F f" }}</th>
         <th scope="row">{{ object.get_right_desigion }}</th>
       <td>
           {% if object.is_right %}
@@ -45,4 +45,5 @@
    {% endfor %}
   </tbody>
 </table>
+    <button type="button" class="btn btn-light" onclick="document.location='{% url 'practice:practice' %}'">Практиковаться!</button>
 {% endblock %}

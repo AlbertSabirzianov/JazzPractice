@@ -44,5 +44,5 @@ class PracticeResult(LoginRequiredMixin, ListView):
         """Выбираем только те результаты, которые принадлежат студенту."""
         queryset = self.model.objects.filter(
             user=self.request.user.studentmap
-        )
+        )[:20]
         return queryset

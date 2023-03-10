@@ -2,7 +2,16 @@
 
 {% block content %}
 
-{{ object }}
-
+{% if object.is_right %}
+    <h3>Всё верно! Это {{ object.get_right_desigion }}</h3>
+    <img src="https://lifeo.ru/wp-content/uploads/gif-salyut-6.gif" width="300px" height="300px">
+{% else %}
+    <h3>Вы ошиблись, это был {{ object.get_right_desigion }}...</h3>
+    <img src="https://lifeo.ru/wp-content/uploads/kotiki-60.gif" width="400px" height="300px">
+{% endif %}
+<div>
+<button border="20px" type="button" class="btn btn-light" onclick="document.location='{% url 'practice:practice' %}'">Практиковаться дальше</button>
+<button border="20px" type="button" class="btn btn-light" onclick="document.location='{% url 'practice:result' %}'">Результаты</button>
+</div>
 
 {% endblock %}
