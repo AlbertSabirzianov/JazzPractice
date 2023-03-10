@@ -43,7 +43,7 @@ class ChordChoice(models.Model, ChordDataMixin):
         null=False,
     )
     right_desigion = models.PositiveSmallIntegerField(
-        verbose_name='Верное решение:',
+        verbose_name='',
         choices=Desigion.choices,
         blank=True,
         null=True,

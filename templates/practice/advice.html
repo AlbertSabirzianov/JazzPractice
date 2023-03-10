@@ -2,8 +2,47 @@
 
 {% block content %}
 
-{% for object in object_list %}
-<p>{{ object }}</p>
-{% endfor %}
+<h3>
+    История практики:
+</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Время</th>
+      <th scope="col">Аккорд</th>
+        <th scope="col">Угадан</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for object in object_list %}
+    <tr>
+      <th scope="row">{{ object.choice_time|date:"j F Y" }}</th>
+        <th scope="row">{{ object.get_right_desigion }}</th>
+      <td>
+          {% if object.is_right %}
+          <svg fill="#3cbe19" width="30px" height="30px" viewBox="-5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#3cbe19">
 
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <g id="SVGRepo_iconCarrier"> <title>checkbox</title> <path d="M16.156 20.156l2.313-3.313v9.469h-18.469v-18.438h14.875l-1.594 2.313h-10.969v13.813l13.844 0.031v-3.875zM18.219 6.125l-7.375 10.656-5.156-3.813-2.594 3.594 8.75 6.688 10.031-14.406z"/> </g>
+
+            </svg>
+          {% else %}
+          <svg width="30px" height="30px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <g id="SVGRepo_iconCarrier"> <path d="M16 8L8 16M8.00001 8L16 16" stroke="#cd1313" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+
+            </svg>
+          {% endif %}
+                  </td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

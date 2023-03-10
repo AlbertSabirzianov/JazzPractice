@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
+<div>
+    <p id="yes">{{ form.right }}</p>
+    {{ form.media_chord }}
+</div>
 <form method="post">
     {% csrf_token %}
-{{ form.as_p }}
+    {{ form.as_p }}
      <button type="submit" class="btn btn-light">Выбрать</button>
 </form>
 
+<script src="{% static 'practice.js' %}"></script>
 {% endblock %}

@@ -26,13 +26,6 @@ class ViesTestCase(TestCase):
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
 
-    def test_context_practice_view(self):
-        response = self.authorized_client.get(
-            reverse('practice:practice')
-        )
-        ob = response.context['media_chord']
-        self.assertEqual(ob, '')
-
     def test_context_sucsess(self):
         response = self.authorized_client.get(
             reverse('practice:sucsess', kwargs={'pk': self.chordchoice.pk})

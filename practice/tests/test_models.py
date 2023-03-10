@@ -25,7 +25,6 @@ class ModelsTestCase(TestCase):
         """Проверка verbose_name полей ChordChoice."""
         data = {
             'desigion': 'Выберите аккорд:',
-            'right_desigion': 'Верное решение:'
         }
 
         for field, text in data.items():

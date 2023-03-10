@@ -20,8 +20,9 @@ Make form in forms.py for PersonalMap ... Done
 Add DataMixin in classbasedvies ... Done
 Make tests for 'persons'.... Done
 Make ChordPractice view .... Done
-Make ChordSucsess view ...
-Make PracticeHistory view ...
-Make PracticeAdvice view ...
+Make ChordSucsess view ... Done
+Make PracticeHistory view ... Done
+Make PracticeAdvice view ... Done
+Make
 
 

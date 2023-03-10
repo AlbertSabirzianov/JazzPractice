@@ -1,5 +1,3 @@
-import random
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -7,7 +5,6 @@ from django.views.generic import ListView, CreateView, DetailView
 
 from .forms import ChordChoiceForm
 from .models import ChordChoice
-from .utils import Chord
 
 
 class PracticeView(LoginRequiredMixin, CreateView):
@@ -15,26 +12,14 @@ class PracticeView(LoginRequiredMixin, CreateView):
     template_name = 'practice/practice.html'
     form_class = ChordChoiceForm
 
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.new_chord: int = random.randint(1, 25)
-        self.media_chord: str = Chord.get_new_chord(self.new_chord)
-
     def get_success_url(self):
         return reverse('practice:sucsess', kwargs={'pk': self.object.pk})
-
-    def get_context_data(self, **kwargs):
-        """Добавляем в контекст media_chord (адрес записи аккорда mp3)."""
-        context = super().get_context_data()
-        context['media_chord'] = self.media_chord
-        return context
 
     def form_valid(self, form):
         """
         Сохраняет в базе ChordChoice и перенаправляет на страницу успеха.
         """
-        self.object = form.save()
-        self.object.right_desigion = self.new_chord
+        self.object = form.save(commit=False)
         self.object.user = self.request.user.studentmap
         self.object.save()
         if self.object.is_right():

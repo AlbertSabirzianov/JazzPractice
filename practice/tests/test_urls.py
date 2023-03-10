@@ -19,6 +19,7 @@ class UrlsTestCase(TestCase):
         cls.chordchoice = ChordChoice.objects.create(
             user=cls.studentmap,
             desigion=1,
+            right_desigion=1,
         )
         cls.templates_name_urls = {
             '/practice/': 'practice/practice.html',
