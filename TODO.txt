@@ -23,6 +23,6 @@ Make ChordPractice view .... Done
 Make ChordSucsess view ... Done
 Make PracticeHistory view ... Done
 Make PracticeAdvice view ... Done
-Make
+
 
 

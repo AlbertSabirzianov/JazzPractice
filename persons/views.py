@@ -27,6 +27,10 @@ class Best(ListView):
     template_name = 'persons/best.html'
     model = StudentMap
 
+    def get_queryset(self):
+        queryset = self.model.objects.all()[:20]
+        return queryset
+
 
 class LoginUser(LoginView):
     """Страница логина."""

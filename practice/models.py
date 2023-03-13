@@ -19,22 +19,22 @@ class ChordChoice(models.Model, ChordDataMixin):
         SEPT_SHARP_ELEVEN = 7, _('7(#11)')
         SEPT_FLAT_NINE = 8, _('7(b9)')
         SEPT_SHARP_NINE = 9, _('7(#9)')
-        SEPT_FLAT_FIVE = 10, _('7(b5)')
-        SEPT_SHARP_FIVE = 11, _('7(#5)')
-        SEPT_FLAT_NINE_FLAT_THIRTEEN = 12, _('7(b9,b13)')
-        SEPT_SHARP_NINE_FLAT_THIRTEEN = 13, _('7(#9,b13)')
-        HALFDIMINISHED = 14, _('m7(b5)')
-        HALFDIMINISHED_NINE = 15, _('m9(b5)')
-        SUS = 16, _('7sus4')
-        SUS_NINE = 17, _('9sus4')
-        SUS_THIRTEEN = 18, _('13sus4')
-        MAJ = 19, _('maj7')
-        MAJ_NINE = 20, _('maj9')
-        MAJ_SHARP_ELEVEN = 21, _('maj7(#11)')
-        MINOR_MAJ_SEVEN = 22, _('min(maj7)')
-        MINOR_MAJ_SEVEN_NINE = 23, _('min9(maj7)')
-        MINOR_SIX = 24, _('min6')
-        MINOR_SIX_NINE = 25, _('min6/9')
+        # SEPT_FLAT_FIVE = 10, _('7(b5)')
+        SEPT_SHARP_FIVE = 10, _('7(#5)')
+        SEPT_FLAT_NINE_FLAT_THIRTEEN = 11, _('7(b9,b13)')
+        SEPT_SHARP_NINE_FLAT_THIRTEEN = 12, _('7(#9,b13)')
+        HALFDIMINISHED = 13, _('m7(b5)')
+        HALFDIMINISHED_NINE = 14, _('m9(b5)')
+        SUS = 15, _('7sus4')
+        SUS_NINE = 16, _('9sus4')
+        SUS_THIRTEEN = 17, _('13sus4')
+        MAJ = 18, _('maj7')
+        MAJ_NINE = 19, _('maj9')
+        MAJ_SHARP_ELEVEN = 20, _('maj7(#11)')
+        MINOR_MAJ_SEVEN = 21, _('min(maj7)')
+        MINOR_MAJ_SEVEN_NINE = 22, _('min9(maj7)')
+        MINOR_SIX = 23, _('min6')
+        MINOR_SIX_NINE = 24, _('min6/9')
 
     desigion = models.PositiveSmallIntegerField(
         verbose_name='Выберите аккорд:',
@@ -63,4 +63,12 @@ class ChordChoice(models.Model, ChordDataMixin):
 
     class Meta:
         ordering = ['-choice_time']
+
+
+class Chord(models.Model, ChordDataMixin):
+    music = models.FileField(upload_to='media')
+    chord = models.PositiveSmallIntegerField(
+        choices=ChordChoice.Desigion.choices,
+    )
+
 

@@ -4,7 +4,9 @@
 {% load static %}
 <div>
     <p id="yes">{{ form.right }}</p>
-    {{ form.media_chord }}
+    <audio src="{{ form.media_chord.music.url }}" controls autoplay>
+
+    <audio/>
 </div>
 <form method="post">
     {% csrf_token %}
