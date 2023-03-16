@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+{% load static %}
 <h3>Теория по всем видам аккордов:</h3>
 <hr>
 <button type="button" class="btn btn-secondary btn-lg" onclick="document.location='{% url 'lessons:maj' %}'">
@@ -59,11 +59,6 @@
     Большие минорные септакорды
 </button>
 
-<style>
-.content button {
-    padding: 10px;
-    margin: 10px;
-}
-</style>
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
 
 {% endblock %}

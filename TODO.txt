@@ -23,6 +23,7 @@ Make ChordPractice view .... Done
 Make ChordSucsess view ... Done
 Make PracticeHistory view ... Done
 Make PracticeAdvice view ... Done
-
+Make Button Play in practice.html and practice.js ..... Done
+Make Content for html in lessons ......
 
 

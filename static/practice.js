@@ -4,3 +4,8 @@ let element = document.getElementById('id_right_desigion');
 element.value = right;
 element.style.visibility = 'hidden';
 document.getElementById('yes').style.visibility = 'hidden';
+
+var me = document.getElementById('play');
+me.onclick = function() {
+    document.getElementById('player').play();
+}
