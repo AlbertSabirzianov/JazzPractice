@@ -1,7 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView, CreateView, DetailView, TemplateView
 
 from .forms import ChordChoiceForm
 from .models import ChordChoice
@@ -24,7 +24,7 @@ class PracticeView(LoginRequiredMixin, CreateView):
         self.object.save()
         if self.object.is_right():
             """Если аккорд угадан, добавляем рейтинг студенту."""
-            self.request.user.studentmap.reiting += 1
+            self.request.user.studentmap.reiting += 5
             self.request.user.studentmap.save()
         return HttpResponseRedirect(self.get_success_url())
 
@@ -46,3 +46,8 @@ class PracticeResult(LoginRequiredMixin, ListView):
             user=self.request.user.studentmap
         )[:20]
         return queryset
+
+
+class AllPracticeView(TemplateView):
+    """Страничка всех видов практики."""
+    template_name = 'practice/all.html'

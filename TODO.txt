@@ -24,6 +24,7 @@ Make ChordSucsess view ... Done
 Make PracticeHistory view ... Done
 Make PracticeAdvice view ... Done
 Make Button Play in practice.html and practice.js ..... Done
-Make Content for html in lessons ......
-
+Make Content for html in lessons ...... Done
+Make Chources app for eache chord ........
+Make admin site class for StudentMap ....
 

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'persons',
     'lessons',
     'practice',
+    'lessons_practice',
 ]
 
 MIDDLEWARE = [

@@ -32,7 +32,9 @@ class SeptChord(LoginRequiredMixin, TemplateView):
         """Добавляем музыкальные примеры на страницу."""
         context = super(SeptChord, self).get_context_data()
         for number in range(4, 13):
-            context[f'sept_{number}'] = random.choice(Chord.objects.filter(chord=number))
+            context[f'sept_{number}'] = random.choice(
+                Chord.objects.filter(chord=number)
+            )
         return context
 
 
@@ -43,7 +45,9 @@ class SusChord(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(SusChord, self).get_context_data()
         for number in range(15, 18):
-            context[f'sus_{number}'] = random.choice(Chord.objects.filter(chord=number))
+            context[f'sus_{number}'] = random.choice(
+                Chord.objects.filter(chord=number)
+            )
         return context
 
 
@@ -54,7 +58,9 @@ class HalfDim(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(HalfDim, self).get_context_data()
         for number in range(13, 15):
-            context[f'half_{number}'] = random.choice(Chord.objects.filter(chord=number))
+            context[f'half_{number}'] = random.choice(
+                Chord.objects.filter(chord=number)
+            )
         return context
 
 
@@ -65,7 +71,9 @@ class Maj(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Maj, self).get_context_data()
         for number in range(18, 21):
-            context[f'maj_{number}'] = random.choice(Chord.objects.filter(chord=number))
+            context[f'maj_{number}'] = random.choice(
+                Chord.objects.filter(chord=number)
+            )
         return context
 
 
@@ -76,5 +84,7 @@ class MinorMaj(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         contex = super(MinorMaj, self).get_context_data()
         for number in range(21, 25):
-            contex[f'min_{number}'] = random.choice(Chord.objects.filter(chord=number))
+            contex[f'min_{number}'] = random.choice(
+                Chord.objects.filter(chord=number)
+            )
         return contex

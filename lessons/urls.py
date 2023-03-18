@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import AllLessons, MinorChord, SeptChord, SusChord, HalfDim, Maj, MinorMaj
+from .views import AllLessons, MinorChord, SeptChord, SusChord,\
+    HalfDim, Maj, MinorMaj
 
 app_name = 'lessons'
 
@@ -12,4 +13,3 @@ urlpatterns = [
     path('maj/', Maj.as_view(), name='maj'),
     path('minor_maj/', MinorMaj.as_view(), name='minor_maj'),
 ]
-

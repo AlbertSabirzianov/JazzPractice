@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
 
 {% if object.is_right %}
@@ -10,8 +10,10 @@
     <img src="https://lifeo.ru/wp-content/uploads/kotiki-60.gif" width="400px" height="300px">
 {% endif %}
 <div>
-<button border="20px" type="button" class="btn btn-light" onclick="document.location='{% url 'practice:practice' %}'">Практиковаться дальше</button>
+<button id="back" border="20px" type="button" class="btn btn-light">Практиковаться дальше</button>
 <button border="20px" type="button" class="btn btn-light" onclick="document.location='{% url 'practice:result' %}'">Результаты</button>
 </div>
+
+<script src="{% static 'sucsess.js' %}"></script>
 
 {% endblock %}

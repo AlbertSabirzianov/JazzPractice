@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h3>
+    Выберите тип практики:
+</h3>
+<hr>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Аккорды</th>
+      <th scope="col">Рейтинг</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"><a href="{% url 'practice:practice' %}">Все аккорды</a></th>
+      <td>+5</td>
+    </tr>
+    <tr>
+      <th scope="row"><a href="{% url 'lessons_practice:minor' %}">Малые минорные септаккорды</a></th>
+      <td>+1</td>
+    </tr>
+    <tr>
+      <th scope="row"><a href="{% url 'lessons_practice:sept' %}">Доминант септаккорды</a></th>
+      <td>+3</td>
+    </tr>
+    <tr>
+      <th scope="row"><a href="{% url 'lessons_practice:sus' %}">Sus аккорды</a></th>
+      <td>+1</td>
+    </tr>
+    <tr>
+      <th scope="row"><a href="{% url 'lessons_practice:maj' %}">Большие мажорные септаккорды</a></th>
+      <td>+1</td>
+    </tr>
+    <tr>
+      <th scope="row"><a href="{% url 'lessons_practice:minmaj' %}">Большие минорные септаккорды (+min6, min6/9)</a></th>
+      <td>+2</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
