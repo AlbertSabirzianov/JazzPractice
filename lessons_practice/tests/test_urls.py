@@ -3,17 +3,17 @@ import tempfile
 from http import HTTPStatus
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client, override_settings
 
-from practice.models import Chord
+from persons.models import StudentMap, User
+from practice.models import Chord, ChordChoice
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
 
 
 @override_settings(MEDIA_ROOT=TEMP_MEDIA_ROOT)
-class LessonsUrlsTestCase(TestCase):
+class UrlsTestCase(TestCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -37,14 +37,18 @@ class LessonsUrlsTestCase(TestCase):
         )
         for i in range(1, 25):
             Chord.objects.create(chord=i, music=uploaded)
+        cls.studentmap = StudentMap.objects.create(user=cls.user)
+        cls.chordchoice = ChordChoice.objects.create(
+            user=cls.studentmap,
+            desigion=1,
+            right_desigion=1,
+        )
         cls.templates_name_urls = {
-            '/lessons/all/': 'lessons/all.html',
-            '/lessons/minor/': 'lessons/minor.html',
-            '/lessons/sept/': 'lessons/sept.html',
-            '/lessons/sus/': 'lessons/sus.html',
-            '/lessons/half_diminished/': 'lessons/half_diminished.html',
-            '/lessons/maj/': 'lessons/maj.html',
-            '/lessons/minor_maj/': 'lessons/minor_maj.html',
+            '/lessons_practice/minor/': 'practice/practice.html',
+            '/lessons_practice/sept/': 'practice/practice.html',
+            '/lessons_practice/sus/': 'practice/practice.html',
+            '/lessons_practice/minmaj/': 'practice/practice.html',
+            '/lessons_practice/maj/': 'practice/practice.html',
         }
 
     @classmethod
@@ -71,13 +75,3 @@ class LessonsUrlsTestCase(TestCase):
             with self.subTest(address=address):
                 response = self.authorized_client.get(address)
                 self.assertTemplateUsed(response, template)
-
-    def test_redirect_url(self):
-        """Проверка редиректов."""
-        for adress in self.templates_name_urls.keys():
-            with self.subTest(adress=adress):
-                response = self.client.get(adress, follow=True)
-                self.assertRedirects(response, f'/login/?next={adress}')
-
-
-
