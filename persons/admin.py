@@ -1,9 +1,17 @@
 from django.contrib import admin
 from .models import StudentMap, PersonalMap, AboutSite, Feetback
-# Register your models here.
 
 
-admin.site.register(StudentMap)
-admin.site.register(PersonalMap)
+class PersonalMapAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'stady_level', 'stady_course')
+    list_filter = ('stady_level', 'stady_course')
+
+
+class StudentMapAdmin(admin.ModelAdmin):
+    list_display = ('__str__', 'reiting')
+
+
+admin.site.register(StudentMap, StudentMapAdmin)
+admin.site.register(PersonalMap, PersonalMapAdmin)
 admin.site.register(AboutSite)
 admin.site.register(Feetback)

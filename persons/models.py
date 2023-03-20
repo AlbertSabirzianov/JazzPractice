@@ -13,9 +13,11 @@ class StudentMap(models.Model, DataMixin):
 
     class Meta:
         ordering = ['-reiting']
+        verbose_name = 'Карта студента'
+        verbose_name_plural = 'Карты студентов'
 
     def __str__(self):
-        return f'Учебная карта {self.get_full_name()}'
+        return self.get_full_name()
 
 
 class PersonalMap(DataMixin, models.Model):
@@ -61,7 +63,11 @@ class PersonalMap(DataMixin, models.Model):
         return self.data_course[self.stady_course]
 
     def __str__(self):
-        return f'Персональная карта {self.get_full_name()}'
+        return self.get_full_name()
+
+    class Meta:
+        verbose_name = 'Персональная карта'
+        verbose_name_plural = 'Персональные карты'
 
 
 class AboutSite(models.Model):
@@ -70,6 +76,8 @@ class AboutSite(models.Model):
     page = models.PositiveSmallIntegerField(_('Страничка'))
 
     class Meta:
+        verbose_name = 'Описание сайта'
+        verbose_name_plural = 'Описание сайта'
         ordering = ['page']
 
     def __str__(self):
@@ -92,6 +100,8 @@ class Feetback(models.Model):
     stars = models.PositiveSmallIntegerField(verbose_name='Оценка', choices=Star.choices)
 
     class Meta:
+        verbose_name = 'Отзывы'
+        verbose_name_plural = 'Отзывы'
         ordering = ['-pub_time']
 
     def __str__(self):

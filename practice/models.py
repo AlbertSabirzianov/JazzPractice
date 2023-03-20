@@ -59,9 +59,11 @@ class ChordChoice(models.Model, ChordDataMixin):
         return self.data_number_str[self.right_desigion]
 
     def __str__(self):
-        return f'{self.user.get_full_name()} - {self.is_right()}'
+        return self.user.get_full_name()
 
     class Meta:
+        verbose_name = 'Угаданный аккорд'
+        verbose_name_plural = 'Угаданные аккорды'
         ordering = ['-choice_time']
 
 
@@ -70,5 +72,12 @@ class Chord(models.Model, ChordDataMixin):
     chord = models.PositiveSmallIntegerField(
         choices=ChordChoice.Desigion.choices,
     )
+
+    def __str__(self):
+        return self.data_number_str[self.chord]
+
+    class Meta:
+        verbose_name = 'Аккорд'
+        verbose_name_plural = 'Аккорды'
 
 
