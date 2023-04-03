@@ -10,6 +10,7 @@ class StudentMap(models.Model, DataMixin):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     reiting = models.PositiveSmallIntegerField(_('Рейтинг'), default=0)
     start_study = models.DateTimeField(_('Начало обучения'), auto_now=True)
+    activiti = models.PositiveSmallIntegerField(_('Активность практики'), default=0)
 
     class Meta:
         ordering = ['-reiting']

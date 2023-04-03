@@ -44,9 +44,14 @@ class LessonsPracticeView(LoginRequiredMixin, CreateView):
         self.object.user = self.request.user.studentmap
         self.object.save()
         if self.object.is_right():
-            """Если аккорд угадан, добавляем рейтинг студенту."""
+            """Если аккорд угадан, добавляем рейтинг студенту и активность."""
             self.request.user.studentmap.reiting += REITING_DICT[
                 self.lesson_type
             ]
+            self.request.user.studentmap.activiti += 1
+            self.request.user.studentmap.save()
+        else:
+            """Если аккорд не угадан, просто добавляем очко активности."""
+            self.request.user.studentmap.activiti += 1
             self.request.user.studentmap.save()
         return HttpResponseRedirect(self.get_success_url())

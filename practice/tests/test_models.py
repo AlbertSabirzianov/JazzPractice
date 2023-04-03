@@ -37,7 +37,7 @@ class ModelsTestCase(TestCase):
         """Проверка метода __str__()"""
         self.assertEqual(
             str(self.chordchoice),
-            'Hey Bob - False'
+            'Hey Bob'
         )
 
     def test_is_right(self):

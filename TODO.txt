@@ -28,4 +28,5 @@ Make Content for html in lessons ...... Done
 Make Chources app for eache chord ........ Done
 Make admin site class for StudentMap .... Done
 Make tests for lessons_practice app ... Done
+Make "activiti" for StudentMap model ... Done
 

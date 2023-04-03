@@ -20,9 +20,9 @@ class TestModels(TestCase):
     def test_str(self):
         """Проверка метода __str__()"""
         str_dict = {
-            self.personalmap: 'Персональная карта Hey Bob',
+            self.personalmap: 'Hey Bob',
             self.feetback: 'Text...',
-            self.studentmap: 'Учебная карта Hey Bob',
+            self.studentmap: 'Hey Bob',
             self.about: 'О сайте страница - 1',
         }
 
