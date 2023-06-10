@@ -8,7 +8,7 @@ class PersonalMapAdmin(admin.ModelAdmin):
 
 
 class StudentMapAdmin(admin.ModelAdmin):
-    list_display = ('__str__', 'reiting')
+    list_display = ('__str__', 'reiting', 'activiti')
 
 
 admin.site.register(StudentMap, StudentMapAdmin)
