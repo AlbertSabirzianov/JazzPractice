@@ -17,7 +17,7 @@
    {% for object in object_list %}
     <tr>
       <th scope="row">{{ object.choice_time|date:"d F f" }}</th>
-        <th scope="row">{{ object.get_right_desigion }}</th>
+        <th scope="row">{{ object.get_right_decision_display }}</th>
       <td>
           {% if object.is_right %}
           <svg fill="#3cbe19" width="30px" height="30px" viewBox="-5 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#3cbe19">

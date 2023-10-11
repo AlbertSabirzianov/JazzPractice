@@ -29,4 +29,10 @@ Make Chources app for eache chord ........ Done
 Make admin site class for StudentMap .... Done
 Make tests for lessons_practice app ... Done
 Make "activiti" for StudentMap model ... Done
+Delete all Mixins ... Done
+Delete email, first_name, last_name from user ... Done
+Make core app ...
+Remake templates sucsess, lessons_practice ...
+Download AccordsPictures and Chords ...
+
 

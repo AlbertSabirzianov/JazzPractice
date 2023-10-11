@@ -8,7 +8,7 @@
 <hr>
 {% for feet in object_list %}
 <div class="card border-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">{{ feet.user.get_full_name }}</div>
+  <div class="card-header">{{ feet.user.username }}</div>
   <div class="card-body">
     <h5 class="card-title">Оценка: {{ feet.stars }}</h5>
     <p class="card-text">{{ feet.text }}</p>

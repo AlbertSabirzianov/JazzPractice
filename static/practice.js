@@ -1,6 +1,6 @@
 let right = document.getElementById('yes').textContent;
 
-let element = document.getElementById('id_right_desigion');
+let element = document.getElementById('id_right_decision');
 element.value = right;
 element.style.visibility = 'hidden';
 document.getElementById('yes').style.visibility = 'hidden';

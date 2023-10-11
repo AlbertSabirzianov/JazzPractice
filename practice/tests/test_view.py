@@ -18,8 +18,8 @@ class ViesTestCase(TestCase):
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.chordchoice = ChordChoice.objects.create(
             user=cls.studentmap,
-            desigion=1,
-            right_desigion=2,
+            decision=1,
+            right_decision=2,
         )
 
     def setUp(self) -> None:
@@ -36,7 +36,7 @@ class ViesTestCase(TestCase):
             1
         )
         self.assertEqual(
-            ob.right_desigion,
+            ob.right_decision,
             2
         )
         self.assertFalse(
@@ -49,11 +49,11 @@ class ViesTestCase(TestCase):
         )
         ob = response.context['object_list'][0]
         self.assertEqual(
-            ob.desigion,
+            ob.decision,
             1
         )
         self.assertEqual(
-            ob.right_desigion,
+            ob.right_decision,
             2
         )
         self.assertFalse(

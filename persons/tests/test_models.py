@@ -1,5 +1,5 @@
 from django.test import TestCase
-from ..models import PersonalMap, StudentMap, Feetback, User, AboutSite
+from ..models import PersonalMap, StudentMap, Feetback, User
 
 
 class TestModels(TestCase):
@@ -15,7 +15,6 @@ class TestModels(TestCase):
         cls.personalmap = PersonalMap.objects.create(user=cls.user)
         cls.feetback = Feetback.objects.create(user=cls.user, text='Text', stars=5)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
-        cls.about = AboutSite.objects.create(text='Text', page=1)
 
     def test_str(self):
         """Проверка метода __str__()"""
@@ -23,7 +22,6 @@ class TestModels(TestCase):
             self.personalmap: 'Hey Bob',
             self.feetback: 'Text...',
             self.studentmap: 'Hey Bob',
-            self.about: 'О сайте страница - 1',
         }
 
         for mod, text in str_dict.items():

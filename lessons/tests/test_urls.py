@@ -78,6 +78,3 @@ class LessonsUrlsTestCase(TestCase):
             with self.subTest(adress=adress):
                 response = self.client.get(adress, follow=True)
                 self.assertRedirects(response, f'/login/?next={adress}')
-
-
-

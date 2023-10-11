@@ -12,9 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os.path
 from pathlib import Path
 
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -27,7 +29,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'persons',
     'lessons',
     'practice',
@@ -73,20 +75,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Diplom.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Diplom',
-        'USER': 'Albert',
-        'PASSWORD': 'sae11478',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -106,7 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -117,7 +113,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -139,3 +134,130 @@ MEDIA_URL = '/media/'
 LOGIN_URL = '/login/'
 
 LOGIN_REDIRECT_URL = '/id/'
+
+# attrs for forms
+
+LOGIN_ATTRS = {
+    'class': 'form-control',
+    'id': "floatingInput",
+    'placeholder': 'Логин'
+}
+
+PASSWORD_ATTRS = {
+    'class': 'form-control',
+    'id': "floatingPassword",
+    'type': 'password',
+    'placeholder': 'Пароль'
+}
+
+TEXT_ATTRS = {
+    'class': 'form-control',
+    'id': 'exampleFormControlTextarea1',
+    'rows': 5,
+}
+
+SECOND_PASSWORD_ATTRS = {
+    'class': 'form-control',
+    'id': "floatingPassword",
+    'type': 'password',
+    'placeholder': 'Повторите Пароль'
+}
+
+FORM_SELECT = {
+    'class': 'form-select',
+}
+
+# all jazz chords
+ALL_CHORDS = {
+    'minor': [
+        (1, 'm7'),
+        (2, 'm9'),
+        (3, 'm11'),
+    ],
+    'sept': [
+        (4, '7'),
+        (5, '9'),
+        (6, '13'),
+        (7, '7(#11)'),
+        (8, '13(#11)'),
+        (9, '7(b9)'),
+        (10, '7(#9)'),
+        (11,'7(b5)'),
+        (12,'7(#5)'),
+        (13, '7(b9, b5)'),
+        (14, '7(#9, b5)'),
+        (15, '7(b9,b13)'),
+        (16, '7(#9,b13)'),
+    ],
+    'sus': [
+        (19, '7sus4'),
+        (20, '9sus4'),
+        (21, '13sus4'),
+    ],
+    'maj': [
+        (22, '6/9'),
+        (23, 'maj7'),
+        (24, 'maj9'),
+        (25, 'maj7(#11)'),
+    ],
+    'min': [
+        (26, 'min6/9'),
+        (27, 'min(maj7)'),
+        (28, 'min9(maj7)'),
+    ]
+}
+
+
+class Decision(models.IntegerChoices):
+    """Все возможные аккорды."""
+
+    MINOR = 1, _('m7')
+    MINOR_NINE = 2, _('m9')
+    MINOR_ELEVEN = 3, _('m11')
+
+    SEPT = 4, _('7')
+    SEPT_NINE = 5, _('9')
+    SEPT_THIRTEEN = 6, _('13')
+    SEPT_SHARP_ELEVEN = 7, _('7(#11)')
+    SEPT_THIRTEEN_SHARO_ELEVEN = 8, _('13(#11)')
+    SEPT_FLAT_NINE = 9, _('7(b9)')
+    SEPT_SHARP_NINE = 10, _('7(#9)')
+    SEPT_FLAT_FIVE = 11, _('7(b5)')
+    SEPT_SHARP_FIVE = 12, _('7(#5)')
+    SEPT_FLAT_NINE_FLAT_FIVE = 13, _('7(b9, b5)')
+    SEPT_SHARP_NINE_FLAT_FIVE = 14, _('7(#9, b5)')
+    SEPT_FLAT_NINE_FLAT_THIRTEEN = 15, _('7(b9,b13)')
+    SEPT_SHARP_NINE_FLAT_THIRTEEN = 16, _('7(#9,b13)')
+
+    HALF_DIMINISHED = 17, _('m7(b5)')
+    HALF_DIMINISHED_NINE = 18, _('m9(b5)')
+
+    SUS = 19, _('7sus4')
+    SUS_NINE = 20, _('9sus4')
+    SUS_THIRTEEN = 21, _('13sus4')
+
+    MAJ_SIX_NINE = 22, _('6/9')
+    MAJ = 23, _('maj7')
+    MAJ_NINE = 24, _('maj9')
+    MAJ_SHARP_ELEVEN = 25, _('maj7(#11)')
+
+    MINOR_SIX_NINE = 26, _('min6/9')
+    MINOR_MAJ_SEVEN = 27, _('min(maj7)')
+    MINOR_MAJ_SEVEN_NINE = 28, _('min9(maj7)')
+
+
+class MusicKey(models.TextChoices):
+    """Тональность Аккорда."""
+
+    C = 'C', _('До')
+    Db = 'Db', _('Ре бемоль')
+    D = 'D', _("Ре")
+    Eb = 'Eb', _("Ми бемоль")
+    E = 'E', _("Ми")
+    F = 'F', _("Фа")
+    F_SHARP = 'F#', _("Фа диез")
+    G = 'G', _("Соль")
+    Ab = 'Ab', _("Ля бемоль")
+    A = 'A', _("Ля")
+    Bb = 'Bb', _("Си бемоль")
+    B = 'B', _("Си")

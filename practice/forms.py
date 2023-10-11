@@ -1,20 +1,18 @@
 import random
 
 from django import forms
-from .models import ChordChoice, Chord
+
+from .models import ChordChoice, Chord, Decision
+from Diplom.settings import FORM_SELECT
 
 
 class ChordChoiceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(1, 24)
+        self.right = random.randint(Decision.MINOR, Decision.MINOR_MAJ_SEVEN_NINE)
         self.media_chord = random.choice(Chord.objects.filter(chord=self.right))
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']

@@ -3,7 +3,7 @@ from http import HTTPStatus
 from django.test import TestCase, Client
 from django.urls import reverse
 
-from ..models import PersonalMap, StudentMap, Feetback, User, AboutSite
+from ..models import PersonalMap, StudentMap, Feetback, User
 
 
 class ViesTestCase(TestCase):
@@ -18,17 +18,10 @@ class ViesTestCase(TestCase):
         cls.personalmap = PersonalMap.objects.create(user=cls.user)
         cls.feetback = Feetback.objects.create(user=cls.user, text='Text', stars=5)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
-        cls.about = AboutSite.objects.create(text='About', page=1)
 
     def setUp(self) -> None:
         self.authorized_client = Client()
         self.authorized_client.force_login(self.user)
-
-    def test_about_site(self):
-        """Тест контекста About"""
-        responce = self.client.get(reverse('persons:about'))
-        ob = responce.context['object_list'][0]
-        self.assertEqual(ob.text, 'About')
 
     def test_main_page(self):
         """Тест контекста главной страницы."""
@@ -66,7 +59,3 @@ class ViesTestCase(TestCase):
             response,
             reverse('persons:mane')
         )
-
-
-
-

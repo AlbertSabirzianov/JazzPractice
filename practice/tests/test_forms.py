@@ -40,8 +40,8 @@ class PracticeFormTestCase(TestCase):
             Chord.objects.create(chord=i, music=uploaded)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.data_form = {
-            'desigion': 1,
-            'right_desigion': 1,
+            'decision': 1,
+            'right_decision': 1,
         }
 
     @classmethod

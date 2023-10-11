@@ -1,141 +1,110 @@
 import random
 
 from django import forms
-from practice.models import ChordChoice, Chord
+
+from Diplom.settings import FORM_SELECT, ALL_CHORDS
+from practice.models import ChordChoice, Chord, Decision
 
 
 class LessonsPracticeMinorForm(forms.ModelForm):
-    CHOICES = [
-        (1, 'm7'),
-        (2, 'm9'),
-        (3, 'm11'),
-    ]
+    """Форма практики минорных аккордов."""
 
-    desigion = forms.ChoiceField(choices=CHOICES, help_text='')
+    CHOICES = ALL_CHORDS['minor']
+    decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(1, 3)
+        self.right = random.randint(Decision.MINOR, Decision.MINOR_ELEVEN)
         self.media_chord = random.choice(
             Chord.objects.filter(chord=self.right)
         )
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']
 
 
 class LessonsPracticeSeptForm(forms.ModelForm):
-    CHOICES = [
-        (4, '7'),
-        (5, '9'),
-        (6, '13'),
-        (7, '7(#11)'),
-        (8, '7(b9)'),
-        (9, '7(#9)'),
-        (10, '7(#5)'),
-        (11, '7(b9,b13)'),
-        (12, '7(#9,b13)'),
-    ]
+    """Форма практики септ аккордов."""
 
-    desigion = forms.ChoiceField(choices=CHOICES, help_text='')
+    CHOICES = ALL_CHORDS['sept']
+    decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(4, 12)
+        self.right = random.randint(
+            Decision.SEPT,
+            Decision.SEPT_FLAT_NINE_FLAT_THIRTEEN
+        )
         self.media_chord = random.choice(
             Chord.objects.filter(chord=self.right)
         )
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']
 
 
 class LessonsPracticeSusForm(forms.ModelForm):
-    CHOICES = [
-        (15, '7sus4'),
-        (16, '9sus4'),
-        (17, '13sus4'),
-    ]
+    """Форма практики sus аккордов."""
 
-    desigion = forms.ChoiceField(choices=CHOICES, help_text='')
+    CHOICES = ALL_CHORDS['sus']
+    decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(15, 17)
+        self.right = random.randint(Decision.SUS, Decision.SUS_THIRTEEN)
         self.media_chord = random.choice(
             Chord.objects.filter(chord=self.right)
         )
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']
 
 
 class LessonsPracticeMajForm(forms.ModelForm):
-    CHOICES = [
-        (18, 'maj7'),
-        (19, 'maj9'),
-        (20, 'maj7(#11)'),
-    ]
+    """Форма практики больших мажорных аккордов."""
 
-    desigion = forms.ChoiceField(choices=CHOICES, help_text='')
+    CHOICES = ALL_CHORDS['maj']
+    decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(18, 20)
+        self.right = random.randint(
+            Decision.MAJ_SIX_NINE,
+            Decision.MAJ_SHARP_ELEVEN
+        )
         self.media_chord = random.choice(
             Chord.objects.filter(chord=self.right)
         )
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']
 
 
 class LessonsPracticeMinMajForm(forms.ModelForm):
-    CHOICES = [
-        (21, 'min(maj7)'),
-        (22, 'min9(maj7)'),
-        (23, 'min6'),
-        (24, 'min6/9'),
-    ]
+    """Форма практики минорных аккордов."""
 
-    desigion = forms.ChoiceField(choices=CHOICES, help_text='')
+    CHOICES = ALL_CHORDS['minor']
+    decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.right = random.randint(21, 24)
+        self.right = random.randint(
+            Decision.MINOR_SIX_NINE,
+            Decision.MINOR_MAJ_SEVEN_NINE
+        )
         self.media_chord = random.choice(
             Chord.objects.filter(chord=self.right)
         )
-        self.fields['desigion'].widget.attrs.update(
-            {
-                'class': 'form-select',
-            }
-        )
+        self.fields['decision'].widget.attrs.update(FORM_SELECT)
 
     class Meta:
         model = ChordChoice
-        fields = ['desigion', 'right_desigion']
+        fields = ['decision', 'right_decision']

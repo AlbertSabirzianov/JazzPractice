@@ -8,7 +8,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, TemplateView, UpdateView, DeleteView
 
 from persons.forms import Registration, LoginForm, FeetBackForm, PersonalMapForm
-from persons.models import AboutSite, PersonalMap, StudentMap, Feetback
+from persons.models import PersonalMap, StudentMap, Feetback
 
 
 class MainPage(TemplateView):
@@ -63,13 +63,11 @@ class Success(TemplateView):
     template_name = 'persons/success.html'
 
 
-class About(ListView):
+class About(TemplateView):
     """
     Страница "О проекте".
     """
     template_name = 'persons/about.html'
-    model = AboutSite
-    paginate_by = 1
 
 
 class PersonalPage(LoginRequiredMixin, TemplateView):

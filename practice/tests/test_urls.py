@@ -40,8 +40,8 @@ class UrlsTestCase(TestCase):
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.chordchoice = ChordChoice.objects.create(
             user=cls.studentmap,
-            desigion=1,
-            right_desigion=1,
+            decision=1,
+            right_decision=1,
         )
         cls.templates_name_urls = {
             '/practice/': 'practice/practice.html',

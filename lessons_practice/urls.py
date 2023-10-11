@@ -1,8 +1,12 @@
 from django.urls import path
 
-from .views import LessonsPracticeMajView, LessonsPracticeSusView,\
-    LessonsPracticeMinorView,\
-    LessonsPracticeSeptView, LessonsPracticeMinMajView
+from .views import (
+    LessonsPracticeMajView,
+    LessonsPracticeSusView,
+    LessonsPracticeMinorView,
+    LessonsPracticeSeptView,
+    LessonsPracticeMinMajView
+)
 
 app_name = 'lessons_practice'
 

@@ -17,14 +17,14 @@ class ModelsTestCase(TestCase):
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.chordchoice = ChordChoice.objects.create(
             user=cls.studentmap,
-            desigion=1,
-            right_desigion=2,
+            decision=1,
+            right_decision=2,
         )
 
     def test_verbose(self):
         """Проверка verbose_name полей ChordChoice."""
         data = {
-            'desigion': 'Выберите аккорд:',
+            'decision': 'Выберите аккорд:',
         }
 
         for field, text in data.items():
@@ -45,20 +45,4 @@ class ModelsTestCase(TestCase):
         self.assertFalse(
             self.chordchoice.is_right(),
             msg='не работает метод is_right'
-        )
-
-    def test_get_desigion(self):
-        """Проверка метода get_desigion"""
-        self.assertEqual(
-            self.chordchoice.get_desigion(),
-            'm7',
-            msg='Не работает get_desigion'
-        )
-
-    def test_get_right_desigion(self):
-        """Проверка метода get_right_desigion."""
-        self.assertEqual(
-            self.chordchoice.get_right_desigion(),
-            'm9',
-            msg='Не работает get_right_desigion'
         )

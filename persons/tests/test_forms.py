@@ -10,11 +10,8 @@ class LoginTestCase(TestCase):
         super().setUpClass()
         cls.data_user = {
             'username': 'albert',
-            'email': 'alb@mail.ru',
             'password1': '123456789abs',
             'password2': '123456789abs',
-            'first_name': 'Albert',
-            'last_name': 'Hey',
         }
 
     def test_login(self):
