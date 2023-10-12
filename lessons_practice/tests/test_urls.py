@@ -6,8 +6,9 @@ from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client, override_settings
 
+from Diplom.settings import MusicKey
 from persons.models import StudentMap, User
-from practice.models import Chord, ChordChoice
+from practice.models import Chord, ChordChoice, AccordPicture
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
 
@@ -35,13 +36,15 @@ class UrlsTestCase(TestCase):
             content=small_gif,
             content_type='image/gif'
         )
-        for i in range(1, 25):
+        for i in range(1, 29):
             Chord.objects.create(chord=i, music=uploaded)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.G)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.C)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.chordchoice = ChordChoice.objects.create(
             user=cls.studentmap,
-            desigion=1,
-            right_desigion=1,
+            decision=1,
+            right_decision=1,
         )
         cls.templates_name_urls = {
             '/lessons_practice/minor/': 'practice/practice.html',

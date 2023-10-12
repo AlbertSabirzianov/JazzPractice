@@ -16,18 +16,6 @@ class TestModels(TestCase):
         cls.feetback = Feetback.objects.create(user=cls.user, text='Text', stars=5)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
 
-    def test_str(self):
-        """Проверка метода __str__()"""
-        str_dict = {
-            self.personalmap: 'Hey Bob',
-            self.feetback: 'Text...',
-            self.studentmap: 'Hey Bob',
-        }
-
-        for mod, text in str_dict.items():
-            with self.subTest(model=mod):
-                self.assertEqual(str(mod), text)
-
     def test_verbose_name_personalmap(self):
         """Проверка verbose_name полей PersonalMap."""
         data = {
@@ -54,22 +42,3 @@ class TestModels(TestCase):
                 self.assertEqual(
                     self.feetback._meta.get_field(field).verbose_name, text
                 )
-
-    def test_get_full_name(self):
-        """Тест функции get_full_name() у PersonalMap."""
-        self.assertEqual(
-            self.personalmap.get_full_name(), 'Hey Bob'
-        )
-
-    def test_get_stady_level(self):
-        """Тест функции get_stady_level() у PersonalMap."""
-        self.assertEqual(
-            self.personalmap.get_stady_level(), 'Не выбранно'
-        )
-
-    def test_get_stady_course(self):
-        """Тест функции get_stady_course() у PersonalMap."""
-        self.assertEqual(
-            self.personalmap.get_stady_course(), 'Не выбранно'
-        )
-

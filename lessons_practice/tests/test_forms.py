@@ -7,7 +7,8 @@ from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 
 from persons.models import StudentMap, User
-from practice.models import Chord, ChordChoice
+from practice.models import Chord, ChordChoice, AccordPicture
+from Diplom.settings import MusicKey
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
 
@@ -37,7 +38,10 @@ class UrlsTestCase(TestCase):
         )
         for i in range(1, 29):
             Chord.objects.create(chord=i, music=uploaded)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.G)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.C)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
+
 
     @classmethod
     def tearDownClass(cls):
@@ -110,7 +114,7 @@ class UrlsTestCase(TestCase):
         count_choice = ChordChoice.objects.count()
         response = self.authorized_client.post(
             reverse('lessons_practice:sus'),
-            data={'decision': 15, 'right_decision': 15}
+            data={'decision': 19, 'right_decision': 19}
         )
 
         self.assertEqual(
@@ -120,11 +124,11 @@ class UrlsTestCase(TestCase):
         )
 
         self.assertTrue(
-            ChordChoice.objects.filter(user=self.studentmap, decision=15).exists(),
+            ChordChoice.objects.filter(user=self.studentmap, decision=19).exists(),
             msg='ChordChoice не создался...'
         )
 
-        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=15)
+        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=19)
 
         self.assertRedirects(
             response,
@@ -139,7 +143,7 @@ class UrlsTestCase(TestCase):
         count_choice = ChordChoice.objects.count()
         response = self.authorized_client.post(
             reverse('lessons_practice:minmaj'),
-            data={'decision': 21, 'right_decision': 21}
+            data={'decision': 26, 'right_decision': 26}
         )
 
         self.assertEqual(
@@ -149,11 +153,11 @@ class UrlsTestCase(TestCase):
         )
 
         self.assertTrue(
-            ChordChoice.objects.filter(user=self.studentmap, decision=21).exists(),
+            ChordChoice.objects.filter(user=self.studentmap, decision=26).exists(),
             msg='ChordChoice не создался...'
         )
 
-        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=21)
+        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=26)
 
         self.assertRedirects(
             response,
@@ -168,7 +172,7 @@ class UrlsTestCase(TestCase):
         count_choice = ChordChoice.objects.count()
         response = self.authorized_client.post(
             reverse('lessons_practice:maj'),
-            data={'decision': 18, 'right_decision': 18}
+            data={'decision': 22, 'right_decision': 22}
         )
 
         self.assertEqual(
@@ -178,11 +182,11 @@ class UrlsTestCase(TestCase):
         )
 
         self.assertTrue(
-            ChordChoice.objects.filter(user=self.studentmap, decision=18).exists(),
+            ChordChoice.objects.filter(user=self.studentmap, decision=22).exists(),
             msg='ChordChoice не создался...'
         )
 
-        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=18)
+        chordchoice = ChordChoice.objects.get(user=self.studentmap, decision=22)
 
         self.assertRedirects(
             response,

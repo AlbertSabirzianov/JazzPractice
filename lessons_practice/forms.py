@@ -91,7 +91,7 @@ class LessonsPracticeMajForm(forms.ModelForm):
 class LessonsPracticeMinMajForm(forms.ModelForm):
     """Форма практики минорных аккордов."""
 
-    CHOICES = ALL_CHORDS['minor']
+    CHOICES = ALL_CHORDS['minmaj']
     decision = forms.ChoiceField(choices=CHOICES, help_text='')
 
     def __init__(self, *args, **kwargs):

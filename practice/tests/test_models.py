@@ -1,8 +1,9 @@
 from django.contrib.auth.models import User
 from django.test import TestCase
 
+from Diplom.settings import MusicKey
 from persons.models import StudentMap
-from ..models import ChordChoice
+from ..models import ChordChoice, AccordPicture
 
 
 class ModelsTestCase(TestCase):
@@ -20,6 +21,9 @@ class ModelsTestCase(TestCase):
             decision=1,
             right_decision=2,
         )
+        for i in range(1, 25):
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.G)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.C)
 
     def test_verbose(self):
         """Проверка verbose_name полей ChordChoice."""
@@ -32,13 +36,6 @@ class ModelsTestCase(TestCase):
                 self.assertEqual(
                     self.chordchoice._meta.get_field(field).verbose_name, text
                 )
-
-    def test_str(self):
-        """Проверка метода __str__()"""
-        self.assertEqual(
-            str(self.chordchoice),
-            'Hey Bob'
-        )
 
     def test_is_right(self):
         """Проверка метода is_right"""

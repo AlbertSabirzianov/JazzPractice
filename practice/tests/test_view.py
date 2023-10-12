@@ -2,8 +2,9 @@ from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from django.urls import reverse
 
+from Diplom.settings import MusicKey
 from persons.models import StudentMap
-from practice.models import ChordChoice
+from practice.models import ChordChoice, AccordPicture
 
 
 class ViesTestCase(TestCase):
@@ -21,6 +22,9 @@ class ViesTestCase(TestCase):
             decision=1,
             right_decision=2,
         )
+        for i in range(1, 25):
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.G)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.C)
 
     def setUp(self) -> None:
         self.authorized_client = Client()
@@ -32,7 +36,7 @@ class ViesTestCase(TestCase):
         )
         ob = response.context['object']
         self.assertEqual(
-            ob.desigion,
+            ob.decision,
             1
         )
         self.assertEqual(

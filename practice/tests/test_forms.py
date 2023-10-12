@@ -7,8 +7,9 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 
+from Diplom.settings import MusicKey
 from persons.models import StudentMap
-from ..models import ChordChoice, Chord
+from ..models import ChordChoice, Chord, AccordPicture
 
 TEMP_MEDIA_ROOT = tempfile.mkdtemp(dir=settings.BASE_DIR)
 
@@ -36,8 +37,10 @@ class PracticeFormTestCase(TestCase):
             content=small_gif,
             content_type='image/gif'
         )
-        for i in range(1, 25):
+        for i in range(1, 29):
             Chord.objects.create(chord=i, music=uploaded)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.G)
+            AccordPicture.objects.create(chord=i, music_key=MusicKey.C)
         cls.studentmap = StudentMap.objects.create(user=cls.user)
         cls.data_form = {
             'decision': 1,

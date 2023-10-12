@@ -200,7 +200,7 @@ ALL_CHORDS = {
         (24, 'maj9'),
         (25, 'maj7(#11)'),
     ],
-    'min': [
+    'minmaj': [
         (26, 'min6/9'),
         (27, 'min(maj7)'),
         (28, 'min9(maj7)'),
