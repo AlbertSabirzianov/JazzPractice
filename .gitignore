@@ -1,3 +1,4 @@
 /media
 .coverage
 README.md
+db.sqlite3

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'lessons',
     'practice',
     'lessons_practice',
+    'core',
 ]
 
 MIDDLEWARE = [
