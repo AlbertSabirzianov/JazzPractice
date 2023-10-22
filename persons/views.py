@@ -63,13 +63,6 @@ class Success(TemplateView):
     template_name = 'persons/success.html'
 
 
-class About(TemplateView):
-    """
-    Страница "О проекте".
-    """
-    template_name = 'persons/about.html'
-
-
 class PersonalPage(LoginRequiredMixin, TemplateView):
     """Личная страничка."""
     template_name = 'persons/person.html'

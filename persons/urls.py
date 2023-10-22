@@ -12,7 +12,6 @@ urlpatterns = [
     path('logout/', views.logout_user, name='logout'),
     path('registation/', views.RegisterUser.as_view(), name='registration'),
     path('sucsess/', views.Success.as_view(), name='success'),
-    path('about/', views.About.as_view(), name='about'),
     path('id/', views.PersonalPage.as_view(), name='person'),
     path('make_feetback/', views.MakeFeedBack.as_view(), name='make_feetback'),
     path('edit_feetback/<pk>/', views.UpdateFeedBack.as_view(), name='edit_feetback'),

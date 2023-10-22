@@ -1,53 +1,44 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<audio id="min_7" src="{{ min_21.music.url }}"></audio>
-<audio id="min_9" src="{{ min_22.music.url }}"></audio>
-<audio id="min_6" src="{{ min_23.music.url }}"></audio>
-<audio id="min_69" src="{{ min_24.music.url }}"></audio>
-<p>Text</p>
+<audio id="play_26_C" src="{% static 'Chords/Chord_26_C.wav' %}" hidden></audio>
+<audio id="play_26_G" src="{% static 'Chords/Chord_26_G.wav' %}" hidden></audio>
+
+<audio id="play_27_C" src="{% static 'Chords/Chord_27_C.wav' %}" hidden></audio>
+<audio id="play_27_G" src="{% static 'Chords/Chord_27_G.wav' %}" hidden></audio>
+
+<audio id="play_28_C" src="{% static 'Chords/Chord_28_C.wav' %}" hidden></audio>
+<audio id="play_28_G" src="{% static 'Chords/Chord_28_G.wav' %}" hidden></audio>
+
+<p>Большие минорные септаккорды - септаккорды включающие в себя минорную терцию и большую септиму
+    (здесь к ним добавлен аккорд min6/9 с большой секстой вместо септимы) .
+    Внизу представленны нотные примеры этих септаккордов в тональностях До и Соль.
+    Все нотные примеры можно прослушать кликнув на них.</p>
+<hr>
 <div>
-    <button type="button" class="btn btn-light" id="min9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            min9(maj7)
-    </button>
-
-    <button type="button" class="btn btn-light" id="min7_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            min(maj7)
-    </button>
-
-    <button type="button" class="btn btn-light" id="min6_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            min6
-    </button>
-
-     <button type="button" class="btn btn-light" id="min69_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            min6/9
-    </button>
+    <div>
+        <img class="accord" id="accord_26_C" src="{% static 'Accords/Accord_26_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_26_G" src="{% static 'Accords/Accord_26_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_27_C" src="{% static 'Accords/Accord_27_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_27_G" src="{% static 'Accords/Accord_27_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_28_C" src="{% static 'Accords/Accord_28_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_28_G" src="{% static 'Accords/Accord_28_G.png' %}">
+    </div>
 
 </div>
+
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
+
 <script src="{% static 'lessons/lessons_min.js' %}"></script>
 
 

@@ -1,8 +1,11 @@
+art==6.1
 asgiref==3.6.0
+coverage==7.1.0
 Django==4.1.5
 djangorestframework==3.14.0
 flake8==6.0.0
 mccabe==0.7.0
+Pillow==10.0.1
 psycopg2==2.9.5
 pycodestyle==2.10.0
 pyflakes==3.0.1

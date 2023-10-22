@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<audio id="half_7" src="{{ half_13.music.url }}"></audio>
-<audio id="half_9" src="{{ half_14.music.url }}"></audio>
-<p>Text</p>
+<audio id="play_17_C" src="{% static 'Chords/Chord_17_C.wav' %}" hidden></audio>
+<audio id="play_17_G" src="{% static 'Chords/Chord_17_G.wav' %}" hidden></audio>
 
+<audio id="play_18_C" src="{% static 'Chords/Chord_18_C.wav' %}" hidden></audio>
+<audio id="play_18_G" src="{% static 'Chords/Chord_18_G.wav' %}" hidden></audio>
+
+<p>Полууменьшённые септаккорды включают в себя минорную терцию, малую септиму и уменьшённую квинту. Внизу представленны нотные примеры этих септаккордов в тональностях До и Соль. Все нотные примеры можно прослушать кликнув на них.</p>
+<hr>
 <div>
-    <button type="button" class="btn btn-light" id="half_7_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            m7(b5)
-    </button>
-    <button type="button" class="btn btn-light" id="half_9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            m9(b5)
-    </button>
+    <div>
+        <img class="accord" id="accord_17_C" src="{% static 'Accords/Accord_17_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_17_G" src="{% static 'Accords/Accord_17_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_18_C" src="{% static 'Accords/Accord_18_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_18_G" src="{% static 'Accords/Accord_18_G.png' %}">
+    </div>
+
 </div>
 
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
 <script src="{% static 'lessons/lessons_half.js' %}"></script>
 
 {% endblock %}

@@ -1,44 +1,51 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<audio id="maj_7" src="{{ maj_18.music.url }}"></audio>
-<audio id="maj_9" src="{{ maj_19.music.url }}"></audio>
-<audio id="maj_11" src="{{ maj_20.music.url }}"></audio>
-<p>Text</p>
+<audio id="play_22_C" src="{% static 'Chords/Chord_22_C.wav' %}" hidden></audio>
+<audio id="play_22_G" src="{% static 'Chords/Chord_22_G.wav' %}" hidden></audio>
+
+<audio id="play_23_C" src="{% static 'Chords/Chord_23_C.wav' %}" hidden></audio>
+<audio id="play_23_G" src="{% static 'Chords/Chord_23_G.wav' %}" hidden></audio>
+
+<audio id="play_24_C" src="{% static 'Chords/Chord_24_C.wav' %}" hidden></audio>
+<audio id="play_24_G" src="{% static 'Chords/Chord_24_G.wav' %}" hidden></audio>
+
+<audio id="play_25_C" src="{% static 'Chords/Chord_25_C.wav' %}" hidden></audio>
+<audio id="play_25_G" src="{% static 'Chords/Chord_25_G.wav' %}" hidden></audio>
+
+<p>Большие мажорные септакорды это септаккорды включающие в свой состав мажорную терцию и
+большую септиму (к ним так же добавленны аккорды 6/9 с секстой вместо септимы), внизу представленны нотные примеры этих септаккордов в тональностях До и Соль. Все нотные примеры можно прослушать кликнув на них.
+</p>
+<hr>
 <div>
-    <button type="button" class="btn btn-light" id="maj9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            maj9
-    </button>
-
-    <button type="button" class="btn btn-light" id="maj7_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            maj7
-    </button>
-
-    <button type="button" class="btn btn-light" id="maj11_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            maj#11
-    </button>
-
+    <div>
+        <img class="accord" id="accord_23_C" src="{% static 'Accords/Accord_23_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_23_G" src="{% static 'Accords/Accord_23_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_24_C" src="{% static 'Accords/Accord_24_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_24_G" src="{% static 'Accords/Accord_24_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_25_C" src="{% static 'Accords/Accord_25_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_25_G" src="{% static 'Accords/Accord_25_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_22_C" src="{% static 'Accords/Accord_22_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_22_G" src="{% static 'Accords/Accord_22_G.png' %}">
+    </div>
 </div>
 <script src="{% static 'lessons/lessons_maj.js' %}"></script>
 
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
 
 
 {% endblock %}

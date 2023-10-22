@@ -1,19 +1,25 @@
-var m7_button = document.getElementById('min7_play');
-m7_button.onclick = function() {
-    document.getElementById('min_7').play();
+function playById(num, musicKey) {
+    document.getElementById('play_' + num + '_' + musicKey).play();
 }
 
-var m9_button = document.getElementById('min9_play');
-m9_button.onclick = function() {
-    document.getElementById('min_9').play();
+
+document.getElementById('accord_26_C').onclick = function() {
+    playById('26', 'C');
+}
+document.getElementById('accord_26_G').onclick = function() {
+    playById('26', 'G');
 }
 
-var m11_button = document.getElementById('min6_play');
-m11_button.onclick = function() {
-    document.getElementById('min_6').play();
+document.getElementById('accord_27_C').onclick = function() {
+    playById('27', 'C');
+}
+document.getElementById('accord_27_G').onclick = function() {
+    playById('27', 'G');
 }
 
-var m112_button = document.getElementById('min69_play');
-m112_button.onclick = function() {
-    document.getElementById('min_69').play();
+document.getElementById('accord_28_C').onclick = function() {
+    playById('28', 'C');
+}
+document.getElementById('accord_28_G').onclick = function() {
+    playById('28', 'G');
 }

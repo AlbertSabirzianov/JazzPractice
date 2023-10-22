@@ -2,3 +2,17 @@
     padding: 10px;
     margin: 10px;
 }
+
+.accord {
+    width: 300px;
+    margin-top: 15px;
+}
+
+.accord:hover {
+   opacity: 1;
+}
+
+.accord:hover {
+   transform: scale(1.1);
+   transition: 1s;
+}

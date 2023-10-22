@@ -2,103 +2,145 @@
 
 {% block content %}
 {% load static %}
-<audio id="sept_7" src="{{ sept_4.music.url }}"></audio>
-<audio id="sept_9" src="{{ sept_5.music.url }}"></audio>
-<audio id="sept_13" src="{{ sept_6.music.url }}"></audio>
-<audio id="sept_#11" src="{{ sept_7.music.url }}"></audio>
-<audio id="sept_b9" src="{{ sept_8.music.url }}"></audio>
-<audio id="sept_#9" src="{{ sept_9.music.url }}"></audio>
-<audio id="sept_#5" src="{{ sept_10.music.url }}"></audio>
-<audio id="sept_b9,b13" src="{{ sept_11.music.url }}"></audio>
-<audio id="sept_#9,b13" src="{{ sept_12.music.url }}"></audio>
-<p>Text</p>
+<audio id="play_4_C" src="{% static 'Chords/Chord_4_C.wav' %}" hidden></audio>
+<audio id="play_4_G" src="{% static 'Chords/Chord_4_G.wav' %}" hidden></audio>
+
+<audio id="play_5_C" src="{% static 'Chords/Chord_5_C.wav' %}" hidden></audio>
+<audio id="play_5_G" src="{% static 'Chords/Chord_5_G.wav' %}" hidden></audio>
+
+<audio id="play_6_C" src="{% static 'Chords/Chord_6_C.wav' %}" hidden></audio>
+<audio id="play_6_G" src="{% static 'Chords/Chord_6_G.wav' %}" hidden></audio>
+
+<audio id="play_7_C" src="{% static 'Chords/Chord_7_C.wav' %}" hidden></audio>
+<audio id="play_7_G" src="{% static 'Chords/Chord_7_G.wav' %}" hidden></audio>
+
+<audio id="play_8_C" src="{% static 'Chords/Chord_8_C.wav' %}" hidden></audio>
+<audio id="play_8_G" src="{% static 'Chords/Chord_8_G.wav' %}" hidden></audio>
+
+<audio id="play_9_C" src="{% static 'Chords/Chord_9_C.wav' %}" hidden></audio>
+<audio id="play_9_G" src="{% static 'Chords/Chord_9_G.wav' %}" hidden></audio>
+
+<audio id="play_10_C" src="{% static 'Chords/Chord_10_C.wav' %}" hidden></audio>
+<audio id="play_10_G" src="{% static 'Chords/Chord_10_G.wav' %}" hidden></audio>
+
+<audio id="play_11_C" src="{% static 'Chords/Chord_11_C.wav' %}" hidden></audio>
+<audio id="play_11_G" src="{% static 'Chords/Chord_11_G.wav' %}" hidden></audio>
+
+<audio id="play_12_C" src="{% static 'Chords/Chord_12_C.wav' %}" hidden></audio>
+<audio id="play_12_G" src="{% static 'Chords/Chord_12_G.wav' %}" hidden></audio>
+
+<audio id="play_13_C" src="{% static 'Chords/Chord_13_C.wav' %}" hidden></audio>
+<audio id="play_13_G" src="{% static 'Chords/Chord_13_G.wav' %}" hidden></audio>
+
+<audio id="play_14_C" src="{% static 'Chords/Chord_14_C.wav' %}" hidden></audio>
+<audio id="play_14_G" src="{% static 'Chords/Chord_14_G.wav' %}" hidden></audio>
+
+<audio id="play_15_C" src="{% static 'Chords/Chord_15_C.wav' %}" hidden></audio>
+<audio id="play_15_G" src="{% static 'Chords/Chord_15_G.wav' %}" hidden></audio>
+
+<audio id="play_16_C" src="{% static 'Chords/Chord_16_C.wav' %}" hidden></audio>
+<audio id="play_16_G" src="{% static 'Chords/Chord_16_G.wav' %}" hidden></audio>
+
+<p>Малые мажорные септаккорды, это септаккорды включающие в себя мажорную терцию и малую септиму,
+    так же могут содержать в себе множество альтерированных ступеней. Внизу представленны нотные примеры этих септаккордов в тональностях До и Соль.
+    Все нотные примеры можно прослушать кликнув на них.
+</p>
+<hr>
 <div>
-    <button type="button" class="btn btn-light" id="sept_7_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            7
-    </button>
+    <div>
+        <img class="accord" id="accord_4_C" src="{% static 'Accords/Accord_4_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_4_G" src="{% static 'Accords/Accord_4_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_5_C" src="{% static 'Accords/Accord_5_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_5_G" src="{% static 'Accords/Accord_5_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_6_C" src="{% static 'Accords/Accord_6_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_6_G" src="{% static 'Accords/Accord_6_G.png' %}">
+    </div>
 
-    <button type="button" class="btn btn-light" id="sept_9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            9
-    </button>
+    <div>
+        <img class="accord" id="accord_7_C" src="{% static 'Accords/Accord_7_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_7_G" src="{% static 'Accords/Accord_7_G.png' %}">
+    </div>
 
-    <button type="button" class="btn btn-light" id="sept_13_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            13
-    </button>
+    <div>
+        <img class="accord" id="accord_8_C" src="{% static 'Accords/Accord_8_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_8_G" src="{% static 'Accords/Accord_8_G.png' %}">
+    </div>
 
-    <button type="button" class="btn btn-light" id="sept_#11_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            #11
-    </button>
+    <div>
+        <img class="accord" id="accord_9_C" src="{% static 'Accords/Accord_9_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_9_G" src="{% static 'Accords/Accord_9_G.png' %}">
+    </div>
 
-    <button type="button" class="btn btn-light" id="sept_b9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            b9
-    </button>
+    <div>
+        <img class="accord" id="accord_10_C" src="{% static 'Accords/Accord_10_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_10_G" src="{% static 'Accords/Accord_10_G.png' %}">
+    </div>
 
-    <button type="button" class="btn btn-light" id="sept_#9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            #9
-    </button>
-    <button type="button" class="btn btn-light" id="sept_#5_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            #5
-    </button>
-    <button type="button" class="btn btn-light" id="sept_b9,b13_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            b9,b13
-    </button>
-    <button type="button" class="btn btn-light" id="sept_#9,b13_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            #9,b13
-    </button>
+    <div>
+        <img class="accord" id="accord_11_C" src="{% static 'Accords/Accord_11_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_11_G" src="{% static 'Accords/Accord_11_G.png' %}">
+    </div>
+
+    <div>
+        <img class="accord" id="accord_12_C" src="{% static 'Accords/Accord_12_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_12_G" src="{% static 'Accords/Accord_12_G.png' %}">
+    </div>
+
+    <div>
+        <img class="accord" id="accord_13_C" src="{% static 'Accords/Accord_13_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_13_G" src="{% static 'Accords/Accord_13_G.png' %}">
+    </div>
+
+    <div>
+        <img class="accord" id="accord_14_C" src="{% static 'Accords/Accord_14_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_14_G" src="{% static 'Accords/Accord_14_G.png' %}">
+    </div>
+
+    <div>
+        <img class="accord" id="accord_15_C" src="{% static 'Accords/Accord_15_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_15_G" src="{% static 'Accords/Accord_15_G.png' %}">
+    </div>
+
+    <div>
+        <img class="accord" id="accord_16_C" src="{% static 'Accords/Accord_16_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_16_G" src="{% static 'Accords/Accord_16_G.png' %}">
+    </div>
+
 </div>
+
+<script src="{% static 'lessons/lessons_sept.js' %}"></script>
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
+
+
 <script src="{% static 'lessons/lessons_sept.js' %}"></script>
 {% endblock %}

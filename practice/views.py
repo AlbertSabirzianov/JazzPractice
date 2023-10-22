@@ -3,7 +3,7 @@ from django.views.generic import ListView, DetailView, TemplateView
 
 from Diplom.settings import MusicKey
 from lessons_practice.utils import LessonsPracticeView
-from .models import ChordChoice, AccordPicture
+from .models import ChordChoice, AccordPicture, Chord
 
 
 class PracticeView(LessonsPracticeView):
@@ -27,6 +27,14 @@ class SucsessView(LoginRequiredMixin, DetailView):
             music_key=MusicKey.C
         )
         context['accord_G'] = AccordPicture.objects.get(
+            chord=self.object.right_decision,
+            music_key=MusicKey.G
+        )
+        context['chord_C'] = Chord.objects.get(
+            chord=self.object.right_decision,
+            music_key=MusicKey.C
+        )
+        context['chord_G'] = Chord.objects.get(
             chord=self.object.right_decision,
             music_key=MusicKey.G
         )

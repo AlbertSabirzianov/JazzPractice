@@ -3,7 +3,7 @@
 {% block content %}
 {% load static %}
 <div>
-    <p id="yes">{{ form.right }}</p>
+    <p id="yes" hidden>{{ form.right }}</p>
     <audio id="player" src="{{ form.media_chord.music.url }}" autoplay>
     </audio>
         <button type="button" class="btn btn-light" id="play">

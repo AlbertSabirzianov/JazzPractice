@@ -1,46 +1,42 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<audio id="minor_7" src="{{ minor_7.music.url }}"></audio>
-<audio id="minor_9" src="{{ minor_9.music.url }}"></audio>
-<audio id="minor_11" src="{{ minor_11.music.url }}"></audio>
-<p>В джазовой музыке малый минорный септакорд чаще всего выполняет субдоминантовую функцию и имеет такие разновидности как:
-малый минорный нонакорд - "m9" и малый минорный ундецим аккорд - "m11".
-    Ниже можно послушать примеры их звучания:</p><hr>
+<audio id="play_1_C" src="{% static 'Chords/Chord_1_C.wav' %}" hidden></audio>
+<audio id="play_1_G" src="{% static 'Chords/Chord_1_G.wav' %}" hidden></audio>
+
+<audio id="play_2_C" src="{% static 'Chords/Chord_2_C.wav' %}" hidden></audio>
+<audio id="play_2_G" src="{% static 'Chords/Chord_2_G.wav' %}" hidden></audio>
+
+<audio id="play_3_C" src="{% static 'Chords/Chord_3_C.wav' %}" hidden></audio>
+<audio id="play_3_G" src="{% static 'Chords/Chord_3_G.wav' %}" hidden></audio>
+
+<p>Малые минорные септаккорды - септаккорды включающие в себя минорную терцию
+и малую септиму. Внизу представленны нотные примеры этих септаккордов в тональностях До и Соль. Все нотные примеры можно прослушать кликнув на них.</p>
+<hr>
 <div>
-    <button type="button" class="btn btn-light" id="m9_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            m9
-    </button>
-
-    <button type="button" class="btn btn-light" id="m7_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            m7
-    </button>
-
-    <button type="button" class="btn btn-light" id="m11_play">
-            <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" fill="currentColor" class="bi bi-music-note-list" viewBox="0 0 16 16">
-                          <path d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
-                          <path fill-rule="evenodd" d="M12 3v10h-1V3h1z"/>
-                          <path d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"/>
-                          <path fill-rule="evenodd" d="M0 11.5a.5.5 0 0 1 .5-.5H4a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 7H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 .5 3H8a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-            m11
-    </button>
+    <div>
+        <img class="accord" id="accord_1_C" src="{% static 'Accords/Accord_1_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_1_G" src="{% static 'Accords/Accord_1_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_2_C" src="{% static 'Accords/Accord_2_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_2_G" src="{% static 'Accords/Accord_2_G.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_3_C" src="{% static 'Accords/Accord_3_C.png' %}">
+    </div>
+    <div>
+        <img class="accord" id="accord_3_G" src="{% static 'Accords/Accord_3_G.png' %}">
+    </div>
 
 </div>
 
 <script src="{% static 'lessons/lessons_minor.js' %}"></script>
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
 
 
 

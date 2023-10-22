@@ -1,14 +1,26 @@
-var m7_button = document.getElementById('sus7_play');
-m7_button.onclick = function() {
-    document.getElementById('sus_7').play();
+function playById(num, musicKey) {
+    document.getElementById('play_' + num + '_' + musicKey).play();
 }
 
-var m9_button = document.getElementById('sus9_play');
-m9_button.onclick = function() {
-    document.getElementById('sus_9').play();
+
+document.getElementById('accord_19_C').onclick = function() {
+    playById('19', 'C');
+}
+document.getElementById('accord_19_G').onclick = function() {
+    playById('19', 'G');
 }
 
-var m11_button = document.getElementById('sus13_play');
-m11_button.onclick = function() {
-    document.getElementById('sus_13').play();
+document.getElementById('accord_20_C').onclick = function() {
+    playById('20', 'C');
 }
+document.getElementById('accord_20_G').onclick = function() {
+    playById('20', 'G');
+}
+
+document.getElementById('accord_21_C').onclick = function() {
+    playById('21', 'C');
+}
+document.getElementById('accord_21_G').onclick = function() {
+    playById('21', 'G');
+}
+

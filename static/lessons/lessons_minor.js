@@ -1,14 +1,25 @@
-var m7_button = document.getElementById('m7_play');
-m7_button.onclick = function() {
-    document.getElementById('minor_7').play();
+function playById(num, musicKey) {
+    document.getElementById('play_' + num + '_' + musicKey).play();
 }
 
-var m9_button = document.getElementById('m9_play');
-m9_button.onclick = function() {
-    document.getElementById('minor_9').play();
+
+document.getElementById('accord_1_C').onclick = function() {
+    playById('1', 'C');
+}
+document.getElementById('accord_1_G').onclick = function() {
+    playById('1', 'G');
 }
 
-var m11_button = document.getElementById('m11_play');
-m11_button.onclick = function() {
-    document.getElementById('minor_11').play();
+document.getElementById('accord_2_C').onclick = function() {
+    playById('2', 'C');
+}
+document.getElementById('accord_2_G').onclick = function() {
+    playById('2', 'G');
+}
+
+document.getElementById('accord_3_C').onclick = function() {
+    playById('3', 'C');
+}
+document.getElementById('accord_3_G').onclick = function() {
+    playById('3', 'G');
 }
