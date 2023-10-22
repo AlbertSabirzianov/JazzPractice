@@ -4,4 +4,28 @@
  есть раздел "практиковаться", где пользователю предлагается слушать и угадывать аккорды, все успехи практики
  сохраняются в личном кабинете.
 # Установка
-
+Клонируйте репозиторий на свой компьютер
+```commandline
+git clone https://github.com/AlbertSabirzianov/JazzPractice.git
+```
+Перейдите в каталог приложения
+```commandline
+cd Diplom
+```
+Установите зависимости
+```commandline
+pip install -r req.txt
+```
+Запустите миграции
+```commandline
+python manage.py migrate
+```
+Загрузите Аккорды в базу данных
+```commandline
+python manage.py chords_to_db
+```
+Запустите тестовый сервер
+```commandline
+python manage.py runserver
+```
+Пользуйтесь приложением по адресу [http://127.0.0.1:8000/]()
