@@ -9,7 +9,36 @@
     box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, .2);
     overflow-y: scroll;
 }
+.accord {
+   margin: 2px;
+}
 
 .content::-webkit-scrollbar {
   width: 0px;         /* ширина scrollbar */
+}
+
+/* для мобильных устройств */
+
+@media screen and (max-width: 375px) {
+
+    .content {
+        left: 0px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 414px) {
+
+    .content {
+        left: 0px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 820px) {
+
+    .content {
+        left: 0px;
+        width: auto;
+    }
 }

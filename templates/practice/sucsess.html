@@ -9,8 +9,8 @@
     <audio src="{{ chord_C.music.url }}" hidden id="play_C"></audio>
     <audio src="{{ chord_G.music.url }}" hidden id="play_G"></audio>
     <h3>Вы ошиблись, это был {{ object.get_right_decision_display }}...</h3>
-    <img src="{{ accord_C.picture.url }}" id="accord_C">
-    <img src="{{ accord_G.picture.url }}" id="accord_G">
+    <img src="{{ accord_C.picture.url }}" id="accord_C" class="accord">
+    <img src="{{ accord_G.picture.url }}" id="accord_G" class="accord">
 {% endif %}
 <div>
 <button id="back" border="20px" type="button" class="btn btn-light">Практиковаться дальше</button>
@@ -18,6 +18,6 @@
 </div>
 
 <script src="{% static 'sucsess.js' %}"></script>
-<style src="{% static 'sucsess.css' %}"></style>
+<link rel="stylesheet" href="{% static 'lessons_all.css' %}">
 
 {% endblock %}
