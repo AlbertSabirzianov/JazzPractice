@@ -2,3 +2,4 @@
 .coverage
 README.md
 db.sqlite3
+.env

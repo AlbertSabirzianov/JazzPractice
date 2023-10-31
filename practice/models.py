@@ -59,7 +59,7 @@ class AccordPicture(models.Model):
     Нотный пример аккорда.
     """
 
-    picture = models.ImageField(upload_to='images')
+    picture = models.ImageField(upload_to='media')
     chord = models.PositiveSmallIntegerField(
         choices=Decision.choices,
     )
